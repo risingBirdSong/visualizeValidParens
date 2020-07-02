@@ -5,3 +5,19 @@
 .algoBrace {
   padding: 2px;
 }
+
+.curbrace {
+  animation: pulse 0.5s alternate infinite ease-in-out;
+  color: white;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #2f80ed;
+    font-size: 30px;
+  }
+  100% {
+    background-color: #995bbe;
+    font-size: 50px;
+  }
+}

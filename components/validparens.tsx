@@ -5,7 +5,7 @@ import { LeftBrace, RightBrace } from "./brace";
 const ValidBraces = (): JSX.Element => {
   const [message, setMsg] = React.useState("");
   //todo reset algoStringback to "" - intial state
-  const [algoString, setAlgoString] = React.useState("(()))");
+  const [algoString, setAlgoString] = React.useState("[][(())]{{}}");
   const [formState, setFormState] = React.useState("");
   return (
     <div className="text-center container">

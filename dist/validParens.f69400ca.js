@@ -28414,17 +28414,21 @@ var Algo = function Algo(props) {
       algoArrBacking = _b[0],
       setAlgoBacking = _b[1];
 
-  var _c = React.useState(-1),
-      curIdx = _c[0],
-      setCurIdx = _c[1];
+  var _c = React.useState(false),
+      finished = _c[0],
+      finish = _c[1];
 
-  var _d = React.useState("undefined"),
-      curBrace = _d[0],
-      setCurBrace = _d[1];
+  var _d = React.useState(-1),
+      curIdx = _d[0],
+      setCurIdx = _d[1];
 
-  return React.createElement("div", null, !algoRunning ? React.createElement("h1", null, "lets run the algorithm over this set of braces") : "", React.createElement("h1", {
+  var _e = React.useState("undefined"),
+      curBrace = _e[0],
+      setCurBrace = _e[1];
+
+  return React.createElement("div", null, React.createElement("h1", {
     className: "alert alert-success"
-  }, props.algoString), algoRunning ? React.createElement("div", null, React.createElement("h3", null, "algo is underway"), React.createElement("div", {
+  }, props.algoString), algoRunning ? React.createElement("div", null, finished ? React.createElement("h3", null, "algo finished") : React.createElement("h3", null, "algo is underway"), React.createElement("div", {
     className: "algo-display d-flex border border-primary container p-2 m-2"
   }, React.createElement("div", {
     className: "row m-1 p-1"
@@ -28449,14 +28453,29 @@ var Algo = function Algo(props) {
   }, algoArrBacking.map(function (brace, idx) {
     return idx === curIdx ? React.createElement("span", {
       key: idx,
-      className: "algoBrace text-primary "
+      className: "curbrace algoBrace "
     }, brace) : React.createElement("span", {
       key: idx,
       className: "algoBrace "
     }, brace);
   })), React.createElement("div", {
-    className: "border border-info container p-2 m-2"
+    className: "control border border-info container p-2 m-2"
   }, React.createElement("button", {
+    onClick: function onClick() {
+      if (finished) {
+        finish(false);
+      }
+
+      var newIdx = curIdx + 1;
+      curIdx < algoArrBacking.length - 1 ? function () {
+        setCurIdx(newIdx);
+        setCurBrace(algoArrBacking[newIdx]);
+      }() : function () {
+        finish(true);
+        setCurIdx(-1);
+        setCurBrace("");
+      }();
+    },
     className: "btn btn-outline-success p-2 m-2"
   }, "take single step"), React.createElement("button", {
     className: "btn btn-outline-primary p-2 m-2"
@@ -28506,7 +28525,7 @@ var ValidBraces = function ValidBraces() {
       setMsg = _a[1]; //todo reset algoStringback to "" - intial state
 
 
-  var _b = React.useState("(()))"),
+  var _b = React.useState("[][(())]{{}}"),
       algoString = _b[0],
       setAlgoString = _b[1];
 

@@ -11,20 +11,16 @@ const Algo = (props: AlgoI): JSX.Element => {
   const [algoArrBacking, setAlgoBacking] = React.useState(
     Array.from(props.algoString)
   );
+  const [finished, finish] = React.useState(false);
   const [curIdx, setCurIdx] = React.useState(-1);
   const [curBrace, setCurBrace] = React.useState("undefined");
 
   return (
     <div>
-      {!algoRunning ? (
-        <h1>lets run the algorithm over this set of braces</h1>
-      ) : (
-        ""
-      )}
       <h1 className="alert alert-success">{props.algoString}</h1>
       {algoRunning ? (
         <div>
-          <h3>algo is underway</h3>
+          {finished ? <h3>algo finished</h3> : <h3>algo is underway</h3>}
           <div className="algo-display d-flex border border-primary container p-2 m-2">
             <div className="row m-1 p-1">
               <div className="col-4">
@@ -66,7 +62,7 @@ const Algo = (props: AlgoI): JSX.Element => {
           <div className="algoBraces border border-info container p-2 m-2">
             {algoArrBacking.map((brace, idx) => {
               return idx === curIdx ? (
-                <span key={idx} className="algoBrace text-primary ">
+                <span key={idx} className="curbrace algoBrace ">
                   {brace}
                 </span>
               ) : (
@@ -76,8 +72,26 @@ const Algo = (props: AlgoI): JSX.Element => {
               );
             })}
           </div>
-          <div className="border border-info container p-2 m-2">
-            <button className="btn btn-outline-success p-2 m-2">
+          <div className="control border border-info container p-2 m-2">
+            <button
+              onClick={() => {
+                if (finished) {
+                  finish(false);
+                }
+                let newIdx = curIdx + 1;
+                curIdx < algoArrBacking.length - 1
+                  ? (() => {
+                      setCurIdx(newIdx);
+                      setCurBrace(algoArrBacking[newIdx]);
+                    })()
+                  : (() => {
+                      finish(true);
+                      setCurIdx(-1);
+                      setCurBrace("");
+                    })();
+              }}
+              className="btn btn-outline-success p-2 m-2"
+            >
               take single step
             </button>
             <button className="btn btn-outline-primary p-2 m-2">
