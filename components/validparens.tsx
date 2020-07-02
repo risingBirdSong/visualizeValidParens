@@ -1,6 +1,7 @@
 import * as React from "react";
 import MyForm from "./form";
 import Algo from "./algo";
+import { LeftBrace, RightBrace } from "./brace";
 const ValidBraces = (): JSX.Element => {
   const [message, setMsg] = React.useState("");
   //todo reset algoStringback to "" - intial state
@@ -15,7 +16,7 @@ const ValidBraces = (): JSX.Element => {
         <div>
           <Algo algoString={algoString} />
           <button
-            className="btn btn-outline-primary"
+            className="btn btn-outline-primary p-1 m-1"
             onClick={() => {
               setAlgoString("");
             }}
@@ -28,7 +29,10 @@ const ValidBraces = (): JSX.Element => {
           {" "}
           <h3 className="alert alert-danger">{message}</h3>{" "}
           <h3 className="alert alert-primary">valid chars include</h3>{" "}
-          <h3 className="alert alert-success">( ) [ ] &#123; &#125; </h3>{" "}
+          <h3 className="alert alert-success">
+            ( ) [ ] <LeftBrace />
+            <RightBrace />
+          </h3>{" "}
         </div>
       ) : formState ? (
         <h3 className="alert alert-success">{formState}</h3>
@@ -46,7 +50,7 @@ const ValidBraces = (): JSX.Element => {
             setform={setFormState}
           />
           <button
-            className="btn btn-outline-primary"
+            className="btn btn-outline-primary p-1 m-1"
             onClick={() => {
               setAlgoString(formState);
               setFormState("");

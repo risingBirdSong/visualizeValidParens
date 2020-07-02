@@ -28347,6 +28347,42 @@ var Form = function Form(props) {
 };
 
 exports.default = Form;
+},{"react":"node_modules/react/index.js"}],"components/brace.tsx":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var LeftBrace = function LeftBrace() {
+  return React.createElement(React.Fragment, null, "{");
+};
+
+exports.LeftBrace = LeftBrace;
+
+var RightBrace = function RightBrace() {
+  return React.createElement(React.Fragment, null, "}");
+};
+
+exports.RightBrace = RightBrace;
+
+var Space = function Space() {
+  return React.createElement(React.Fragment, null, "\xA0");
+};
+
+exports.Space = Space;
 },{"react":"node_modules/react/index.js"}],"components/algo.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -28366,6 +28402,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var brace_1 = require("./brace");
+
 var Algo = function Algo(props) {
   // todo reset algoRunning to false
   var _a = React.useState(true),
@@ -28376,20 +28414,38 @@ var Algo = function Algo(props) {
       algoArrBacking = _b[0],
       setAlgoBacking = _b[1];
 
-  var _c = React.useState(0),
+  var _c = React.useState(-1),
       curIdx = _c[0],
       setCurIdx = _c[1];
+
+  var _d = React.useState("undefined"),
+      curBrace = _d[0],
+      setCurBrace = _d[1];
 
   return React.createElement("div", null, !algoRunning ? React.createElement("h1", null, "lets run the algorithm over this set of braces") : "", React.createElement("h1", {
     className: "alert alert-success"
   }, props.algoString), algoRunning ? React.createElement("div", null, React.createElement("h3", null, "algo is underway"), React.createElement("div", {
-    className: "border border-primary"
+    className: "algo-display d-flex border border-primary container p-2 m-2"
+  }, React.createElement("div", {
+    className: "row m-1 p-1"
+  }, React.createElement("div", {
+    className: "col-4"
   }, React.createElement("label", {
     className: "p-1 mg-2 bg-info text-white"
   }, "stack"), React.createElement("h3", {
     className: "stack"
   }, "[ ]")), React.createElement("div", {
-    className: "algoBraces border border-info container"
+    className: "col-4"
+  }, React.createElement("label", {
+    className: "p-1 mg-2 bg-info text-white"
+  }, "current brace"), React.createElement("h3", {
+    className: "stack text-primary"
+  }, curBrace)), React.createElement("div", {
+    className: "col-4 alert-info"
+  }, React.createElement("label", {
+    className: "p-1 mg-2 bg-info text-white"
+  }, "valid braces"), React.createElement("h2", null, " ", React.createElement(brace_1.LeftBrace, null), " ( : \")\", [ : \"]\", ", React.createElement(brace_1.LeftBrace, null), " : \"", React.createElement(brace_1.RightBrace, null), "\" ", React.createElement(brace_1.RightBrace, null))))), React.createElement("div", {
+    className: "algoBraces border border-info container p-2 m-2"
   }, algoArrBacking.map(function (brace, idx) {
     return idx === curIdx ? React.createElement("span", {
       key: idx,
@@ -28398,8 +28454,14 @@ var Algo = function Algo(props) {
       key: idx,
       className: "algoBrace "
     }, brace);
-  }))) : React.createElement("button", {
-    className: "btn btn-outline-primary",
+  })), React.createElement("div", {
+    className: "border border-info container p-2 m-2"
+  }, React.createElement("button", {
+    className: "btn btn-outline-success p-2 m-2"
+  }, "take single step"), React.createElement("button", {
+    className: "btn btn-outline-primary p-2 m-2"
+  }, "auto mode"))) : React.createElement("button", {
+    className: "btn btn-outline-primary p-1 m-1",
     onClick: function onClick() {
       setRunning(true);
     }
@@ -28407,7 +28469,7 @@ var Algo = function Algo(props) {
 };
 
 exports.default = Algo;
-},{"react":"node_modules/react/index.js"}],"components/validparens.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./brace":"components/brace.tsx"}],"components/validparens.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -28436,6 +28498,8 @@ var form_1 = __importDefault(require("./form"));
 
 var algo_1 = __importDefault(require("./algo"));
 
+var brace_1 = require("./brace");
+
 var ValidBraces = function ValidBraces() {
   var _a = React.useState(""),
       message = _a[0],
@@ -28457,7 +28521,7 @@ var ValidBraces = function ValidBraces() {
   }, "valid braces"), React.createElement("hr", null), algoString ? React.createElement("div", null, React.createElement(algo_1.default, {
     algoString: algoString
   }), React.createElement("button", {
-    className: "btn btn-outline-primary",
+    className: "btn btn-outline-primary p-1 m-1",
     onClick: function onClick() {
       setAlgoString("");
     }
@@ -28467,7 +28531,7 @@ var ValidBraces = function ValidBraces() {
     className: "alert alert-primary"
   }, "valid chars include"), " ", React.createElement("h3", {
     className: "alert alert-success"
-  }, "( ) [ ] { } "), " ") : formState ? React.createElement("h3", {
+  }, "( ) [ ] ", React.createElement(brace_1.LeftBrace, null), React.createElement(brace_1.RightBrace, null)), " ") : formState ? React.createElement("h3", {
     className: "alert alert-success"
   }, formState) : "", !algoString ? React.createElement("div", null, " ", React.createElement(form_1.default, {
     setParentString: setMsg,
@@ -28476,7 +28540,7 @@ var ValidBraces = function ValidBraces() {
     formStr: formState,
     setform: setFormState
   }), React.createElement("button", {
-    className: "btn btn-outline-primary",
+    className: "btn btn-outline-primary p-1 m-1",
     onClick: function onClick() {
       setAlgoString(formState);
       setFormState("");
@@ -28485,7 +28549,7 @@ var ValidBraces = function ValidBraces() {
 };
 
 exports.default = ValidBraces;
-},{"react":"node_modules/react/index.js","./form":"components/form.tsx","./algo":"components/algo.tsx"}],"app.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./form":"components/form.tsx","./algo":"components/algo.tsx","./brace":"components/brace.tsx"}],"app.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -28575,7 +28639,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53657" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59944" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

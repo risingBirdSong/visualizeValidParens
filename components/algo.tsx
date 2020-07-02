@@ -1,4 +1,5 @@
 import * as React from "react";
+import { LeftBrace, RightBrace, Space } from "./brace";
 
 interface AlgoI {
   algoString: string;
@@ -10,7 +11,9 @@ const Algo = (props: AlgoI): JSX.Element => {
   const [algoArrBacking, setAlgoBacking] = React.useState(
     Array.from(props.algoString)
   );
-  const [curIdx, setCurIdx] = React.useState(0);
+  const [curIdx, setCurIdx] = React.useState(-1);
+  const [curBrace, setCurBrace] = React.useState("undefined");
+
   return (
     <div>
       {!algoRunning ? (
@@ -22,11 +25,45 @@ const Algo = (props: AlgoI): JSX.Element => {
       {algoRunning ? (
         <div>
           <h3>algo is underway</h3>
-          <div className="border border-primary">
-            <label className="p-1 mg-2 bg-info text-white">stack</label>
-            <h3 className="stack">[ ]</h3>
+          <div className="algo-display d-flex border border-primary container p-2 m-2">
+            <div className="row m-1 p-1">
+              <div className="col-4">
+                <label className="p-1 mg-2 bg-info text-white">stack</label>
+                <h3 className="stack">[ ]</h3>
+              </div>
+              <div className="col-4">
+                <label className="p-1 mg-2 bg-info text-white">
+                  current brace
+                </label>
+                <h3 className="stack text-primary">{curBrace}</h3>
+              </div>
+              <div className="col-4 alert-info">
+                <label className="p-1 mg-2 bg-info text-white">
+                  valid braces
+                </label>
+                <h2>
+                  {" "}
+                  <LeftBrace /> ( : ")", [ : "]", <LeftBrace /> : "
+                  <RightBrace />
+                  " <RightBrace />
+                </h2>
+              </div>
+            </div>
           </div>
-          <div className="algoBraces border border-info container">
+          {/* <div className="container">
+            <div className="row">
+              <div className="lookup col-4 alert alert-info">
+                <label>valid braces</label>
+                <h2>
+                  {" "}
+                  <LeftBrace /> ( : ")", [ : "]", <LeftBrace /> : "
+                  <RightBrace />
+                  " <RightBrace />
+                </h2>
+              </div>
+            </div>
+          </div> */}
+          <div className="algoBraces border border-info container p-2 m-2">
             {algoArrBacking.map((brace, idx) => {
               return idx === curIdx ? (
                 <span key={idx} className="algoBrace text-primary ">
@@ -39,10 +76,18 @@ const Algo = (props: AlgoI): JSX.Element => {
               );
             })}
           </div>
+          <div className="border border-info container p-2 m-2">
+            <button className="btn btn-outline-success p-2 m-2">
+              take single step
+            </button>
+            <button className="btn btn-outline-primary p-2 m-2">
+              auto mode
+            </button>
+          </div>
         </div>
       ) : (
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-outline-primary p-1 m-1"
           onClick={() => {
             setRunning(true);
           }}
