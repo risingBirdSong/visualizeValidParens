@@ -8,6 +8,7 @@ interface AlgoI {
 const Algo = (props: AlgoI): JSX.Element => {
   // todo reset algoRunning to false
   const [algoRunning, setRunning] = React.useState(true);
+  const [toggle, setToggle] = React.useState(false);
   const [algoArrBacking, setAlgoBacking] = React.useState(
     Array.from(props.algoString)
   );
@@ -31,7 +32,14 @@ const Algo = (props: AlgoI): JSX.Element => {
                 <label className="p-1 mg-2 bg-info text-white">
                   current brace
                 </label>
-                <h3 className="stack text-primary">{curBrace}</h3>
+                <h3
+                  className={
+                    toggle ? "highlitbrace-up stack" : "highlitbrace-down "
+                  }
+                >
+                  {" "}
+                  {curBrace}
+                </h3>
               </div>
               <div className="col-4 alert-info">
                 <label className="p-1 mg-2 bg-info text-white">
@@ -62,11 +70,11 @@ const Algo = (props: AlgoI): JSX.Element => {
           <div className="algoBraces border border-info container p-2 m-2">
             {algoArrBacking.map((brace, idx) => {
               return idx === curIdx ? (
-                <span key={idx} className="curbrace algoBrace ">
+                <span key={idx} className=" curbrace algoBrace align-middle">
                   {brace}
                 </span>
               ) : (
-                <span key={idx} className="algoBrace ">
+                <span key={idx} className="algoBrace align-middle">
                   {brace}
                 </span>
               );
@@ -83,6 +91,7 @@ const Algo = (props: AlgoI): JSX.Element => {
                   ? (() => {
                       setCurIdx(newIdx);
                       setCurBrace(algoArrBacking[newIdx]);
+                      setToggle(!toggle);
                     })()
                   : (() => {
                       finish(true);

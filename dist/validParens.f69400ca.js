@@ -28410,21 +28410,25 @@ var Algo = function Algo(props) {
       algoRunning = _a[0],
       setRunning = _a[1];
 
-  var _b = React.useState(Array.from(props.algoString)),
-      algoArrBacking = _b[0],
-      setAlgoBacking = _b[1];
+  var _b = React.useState(false),
+      toggle = _b[0],
+      setToggle = _b[1];
 
-  var _c = React.useState(false),
-      finished = _c[0],
-      finish = _c[1];
+  var _c = React.useState(Array.from(props.algoString)),
+      algoArrBacking = _c[0],
+      setAlgoBacking = _c[1];
 
-  var _d = React.useState(-1),
-      curIdx = _d[0],
-      setCurIdx = _d[1];
+  var _d = React.useState(false),
+      finished = _d[0],
+      finish = _d[1];
 
-  var _e = React.useState("undefined"),
-      curBrace = _e[0],
-      setCurBrace = _e[1];
+  var _e = React.useState(-1),
+      curIdx = _e[0],
+      setCurIdx = _e[1];
+
+  var _f = React.useState("undefined"),
+      curBrace = _f[0],
+      setCurBrace = _f[1];
 
   return React.createElement("div", null, React.createElement("h1", {
     className: "alert alert-success"
@@ -28443,8 +28447,8 @@ var Algo = function Algo(props) {
   }, React.createElement("label", {
     className: "p-1 mg-2 bg-info text-white"
   }, "current brace"), React.createElement("h3", {
-    className: "stack text-primary"
-  }, curBrace)), React.createElement("div", {
+    className: toggle ? "highlitbrace-up stack" : "highlitbrace-down "
+  }, " ", curBrace)), React.createElement("div", {
     className: "col-4 alert-info"
   }, React.createElement("label", {
     className: "p-1 mg-2 bg-info text-white"
@@ -28453,10 +28457,10 @@ var Algo = function Algo(props) {
   }, algoArrBacking.map(function (brace, idx) {
     return idx === curIdx ? React.createElement("span", {
       key: idx,
-      className: "curbrace algoBrace "
+      className: " curbrace algoBrace align-middle"
     }, brace) : React.createElement("span", {
       key: idx,
-      className: "algoBrace "
+      className: "algoBrace align-middle"
     }, brace);
   })), React.createElement("div", {
     className: "control border border-info container p-2 m-2"
@@ -28470,6 +28474,7 @@ var Algo = function Algo(props) {
       curIdx < algoArrBacking.length - 1 ? function () {
         setCurIdx(newIdx);
         setCurBrace(algoArrBacking[newIdx]);
+        setToggle(!toggle);
       }() : function () {
         finish(true);
         setCurIdx(-1);
