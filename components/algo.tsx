@@ -32,14 +32,14 @@ const Algo = (props: AlgoI): JSX.Element => {
                 <label className="p-1 mg-2 bg-info text-white">
                   current brace
                 </label>
-                <h3
+                <h1
                   className={
                     toggle ? "highlitbrace-up stack" : "highlitbrace-down "
                   }
                 >
                   {" "}
                   {curBrace}
-                </h3>
+                </h1>
               </div>
               <div className="col-4 alert-info">
                 <label className="p-1 mg-2 bg-info text-white">

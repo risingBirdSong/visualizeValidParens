@@ -28446,7 +28446,7 @@ var Algo = function Algo(props) {
     className: "col-4"
   }, React.createElement("label", {
     className: "p-1 mg-2 bg-info text-white"
-  }, "current brace"), React.createElement("h3", {
+  }, "current brace"), React.createElement("h1", {
     className: toggle ? "highlitbrace-up stack" : "highlitbrace-down "
   }, " ", curBrace)), React.createElement("div", {
     className: "col-4 alert-info"

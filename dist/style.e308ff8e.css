@@ -7,31 +7,30 @@
 }
 
 .curbrace {
-  animation: pulse 800ms alternate;
+  animation: pulse 400ms alternate ease;
   color: blue;
-  border-radius: 15px;
 }
 
 .highlitbrace-up {
-  animation: highlightup 800ms ease-in;
+  animation: highlightup 800ms ease;
   color: blue;
   border-radius: 15px;
 }
 
 .highlitbrace-down {
-  animation: highlightdown 800ms ease-out;
+  animation: highlightdown 800ms ease;
   color: blue;
   border-radius: 15px;
 }
 
 @keyframes highlightup {
   0% {
-    /* background-color: #2f80ed; */
-    background-color: azure;
-    /* padding: 2px; */
+  }
+  50% {
+    color: white;
   }
   100% {
-    background-color: lightblue;
+    color: darkblue;
     /* padding: 5px; */
   }
 }
@@ -39,11 +38,14 @@
 @keyframes highlightdown {
   0% {
     /* background-color: #2f80ed; */
-    background-color: blue;
+    color: darkblue;
     /* padding: 2px; */
   }
+  50% {
+    color: white;
+  }
   100% {
-    background-color: aliceblue;
+    color: blue;
     /* padding: 5px; */
   }
 }
