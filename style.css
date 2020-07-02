@@ -7,17 +7,22 @@
 }
 
 .curbrace {
-  animation: pulse 0.5s alternate infinite ease-in-out;
-  color: white;
+  animation: pulse 800ms alternate;
+  color: blue;
+  border-radius: 15px;
 }
 
 @keyframes pulse {
   0% {
-    background-color: #2f80ed;
-    padding: 2px;
+    /* background-color: #2f80ed; */
+    border: 2px solid rebeccapurple;
+    background-color: azure;
+    /* padding: 2px; */
   }
   100% {
-    background-color: #995bbe;
-    padding: 10px;
+    border: 6px solid purple;
+    background-color: crimson;
+    color: whitesmoke;
+    /* padding: 5px; */
   }
 }
