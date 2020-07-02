@@ -1,19 +1,30 @@
 type parens = "[" | "]" | "(" | ")" | "{" | "}"
 
+interface lookupI {
+  "(": ")";
+  "[": "]";
+  "{": "}";
+}
+
+
+
 const validParens = (str: string): boolean => {
   if (str.length % 2 !== 0) {
     return false;
   }
-  let lookup = {
+  let validStrings = ["[", "]", "(", ")", "{", "}"];
+  let lookup: { [idx: string]: string } = {
     "(": ")",
     "[": "]",
     "{": "}"
   }
-  let encounters: parens[] = [];
+  let encounters = [];
   for (let s of str) {
-
+    if (!validStrings.includes(s)) {
+      console.error("a non valid string character was passed");
+      return false;
+    }
     if (Object.keys(lookup).includes(s)) {
-      //@ts-ignore
       encounters.push(lookup[s])
     }
     else {
@@ -22,11 +33,9 @@ const validParens = (str: string): boolean => {
       }
       else return false;
     }
-    //@ts-ignore
-    // Object.keys(lookup).includes(s) ? encounters.push(lookup[s]) : encounters.pop() === s ? console.log('valid') : false;
   }
   return true;
 }
 
-console.log(validParens("((([{}])))"))
+console.log(validParens("(()())"))
 

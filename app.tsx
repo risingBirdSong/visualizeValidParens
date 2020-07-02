@@ -1,9 +1,10 @@
 import * as React from "react";
+import ValidBraces from "./components/validparens";
 
 const App = () => {
   return (
     <div>
-      <h1>todo</h1>
+      <ValidBraces />
     </div>
   );
 };

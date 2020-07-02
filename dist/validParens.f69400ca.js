@@ -28285,7 +28285,69 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"app.tsx":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/form.tsx":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react")); //todo
+
+
+var Form = function Form(props) {
+  var updateString = function updateString(e) {
+    props.resetAlgo("");
+    var valid = ["[", "]", "{", "}", "(", ")"];
+    var str = e.currentTarget.value;
+    var strArray = Array.from(str);
+    var rdcd = strArray.reduce(function (acc, cur, idx) {
+      return acc === false ? false : valid.includes(cur) ? acc += cur : false;
+    }, "");
+    rdcd === false ? function () {
+      props.setParentString("please enter only valid braces");
+      props.setform("");
+    }() : function (str) {
+      props.setParentString("");
+      props.setform(str);
+    }(rdcd);
+  }; // console.log()
+
+
+  return React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "row"
+  }, React.createElement("div", {
+    className: "col"
+  }), React.createElement("form", {
+    className: "col"
+  }, React.createElement("div", {
+    className: "form-group"
+  }, React.createElement("label", null, "input a string"), React.createElement("input", {
+    className: "form-control",
+    value: props.formStr,
+    onChange: function onChange(e) {
+      updateString(e);
+    },
+    type: "text"
+  }))), React.createElement("div", {
+    className: "col"
+  })));
+};
+
+exports.default = Form;
+},{"react":"node_modules/react/index.js"}],"components/algo.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -28304,12 +28366,158 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var Algo = function Algo(props) {
+  // todo reset algoRunning to false
+  var _a = React.useState(true),
+      algoRunning = _a[0],
+      setRunning = _a[1];
+
+  var _b = React.useState(Array.from(props.algoString)),
+      algoArrBacking = _b[0],
+      setAlgoBacking = _b[1];
+
+  var _c = React.useState(0),
+      curIdx = _c[0],
+      setCurIdx = _c[1];
+
+  return React.createElement("div", null, !algoRunning ? React.createElement("h1", null, "lets run the algorithm over this set of braces") : "", React.createElement("h1", {
+    className: "alert alert-success"
+  }, props.algoString), algoRunning ? React.createElement("div", null, React.createElement("h3", null, "algo is underway"), React.createElement("div", {
+    className: "border border-primary"
+  }, React.createElement("label", {
+    className: "p-1 mg-2 bg-info text-white"
+  }, "stack"), React.createElement("h3", {
+    className: "stack"
+  }, "[ ]")), React.createElement("div", {
+    className: "algoBraces border border-info container"
+  }, algoArrBacking.map(function (brace, idx) {
+    return idx === curIdx ? React.createElement("span", {
+      key: idx,
+      className: "algoBrace text-primary "
+    }, brace) : React.createElement("span", {
+      key: idx,
+      className: "algoBrace "
+    }, brace);
+  }))) : React.createElement("button", {
+    className: "btn btn-outline-primary",
+    onClick: function onClick() {
+      setRunning(true);
+    }
+  }, "run algorithm"));
+};
+
+exports.default = Algo;
+},{"react":"node_modules/react/index.js"}],"components/validparens.tsx":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var form_1 = __importDefault(require("./form"));
+
+var algo_1 = __importDefault(require("./algo"));
+
+var ValidBraces = function ValidBraces() {
+  var _a = React.useState(""),
+      message = _a[0],
+      setMsg = _a[1]; //todo reset algoStringback to "" - intial state
+
+
+  var _b = React.useState("(()))"),
+      algoString = _b[0],
+      setAlgoString = _b[1];
+
+  var _c = React.useState(""),
+      formState = _c[0],
+      setFormState = _c[1];
+
+  return React.createElement("div", {
+    className: "text-center container"
+  }, React.createElement("h1", {
+    className: "alert alert-info"
+  }, "valid braces"), React.createElement("hr", null), algoString ? React.createElement("div", null, React.createElement(algo_1.default, {
+    algoString: algoString
+  }), React.createElement("button", {
+    className: "btn btn-outline-primary",
+    onClick: function onClick() {
+      setAlgoString("");
+    }
+  }, "reset and pick a new string")) : message ? React.createElement("div", null, " ", React.createElement("h3", {
+    className: "alert alert-danger"
+  }, message), " ", React.createElement("h3", {
+    className: "alert alert-primary"
+  }, "valid chars include"), " ", React.createElement("h3", {
+    className: "alert alert-success"
+  }, "( ) [ ] { } "), " ") : formState ? React.createElement("h3", {
+    className: "alert alert-success"
+  }, formState) : "", !algoString ? React.createElement("div", null, " ", React.createElement(form_1.default, {
+    setParentString: setMsg,
+    curStr: message,
+    resetAlgo: setAlgoString,
+    formStr: formState,
+    setform: setFormState
+  }), React.createElement("button", {
+    className: "btn btn-outline-primary",
+    onClick: function onClick() {
+      setAlgoString(formState);
+      setFormState("");
+    }
+  }, "valid braces check")) : "");
+};
+
+exports.default = ValidBraces;
+},{"react":"node_modules/react/index.js","./form":"components/form.tsx","./algo":"components/algo.tsx"}],"app.tsx":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var validparens_1 = __importDefault(require("./components/validparens"));
+
 var App = function App() {
-  return React.createElement("div", null, React.createElement("h1", null, "todo"));
+  return React.createElement("div", null, React.createElement(validparens_1.default, null));
 };
 
 exports.default = App;
-},{"react":"node_modules/react/index.js"}],"index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./components/validparens":"components/validparens.tsx"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -28367,7 +28575,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61608" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53657" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
