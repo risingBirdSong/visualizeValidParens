@@ -28458,7 +28458,7 @@ var Algo = function Algo(props) {
     return idx === curIdx ? React.createElement("span", {
       key: idx,
       style: {
-        display: "block"
+        display: "inline-block"
       },
       className: "curbrace algoBrace align-middle"
     }, brace) : React.createElement("span", {

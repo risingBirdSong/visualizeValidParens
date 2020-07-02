@@ -72,7 +72,7 @@ const Algo = (props: AlgoI): JSX.Element => {
               return idx === curIdx ? (
                 <span
                   key={idx}
-                  style={{ display: "block" }}
+                  style={{ display: "inline-block" }}
                   className="curbrace algoBrace align-middle"
                 >
                   {brace}
