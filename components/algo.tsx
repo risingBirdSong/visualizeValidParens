@@ -70,7 +70,11 @@ const Algo = (props: AlgoI): JSX.Element => {
           <div className="algoBraces border border-info container p-2 m-2">
             {algoArrBacking.map((brace, idx) => {
               return idx === curIdx ? (
-                <span key={idx} className=" curbrace algoBrace align-middle">
+                <span
+                  key={idx}
+                  style={{ display: "block" }}
+                  className="curbrace algoBrace align-middle"
+                >
                   {brace}
                 </span>
               ) : (
@@ -99,7 +103,7 @@ const Algo = (props: AlgoI): JSX.Element => {
                       setCurBrace("");
                     })();
               }}
-              className="btn btn-outline-success p-2 m-2"
+              className="takestep btn btn-outline-success p-2 m-2"
             >
               take single step
             </button>

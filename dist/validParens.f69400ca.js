@@ -28457,7 +28457,10 @@ var Algo = function Algo(props) {
   }, algoArrBacking.map(function (brace, idx) {
     return idx === curIdx ? React.createElement("span", {
       key: idx,
-      className: " curbrace algoBrace align-middle"
+      style: {
+        display: "block"
+      },
+      className: "curbrace algoBrace align-middle"
     }, brace) : React.createElement("span", {
       key: idx,
       className: "algoBrace align-middle"
@@ -28481,7 +28484,7 @@ var Algo = function Algo(props) {
         setCurBrace("");
       }();
     },
-    className: "btn btn-outline-success p-2 m-2"
+    className: "takestep btn btn-outline-success p-2 m-2"
   }, "take single step"), React.createElement("button", {
     className: "btn btn-outline-primary p-2 m-2"
   }, "auto mode"))) : React.createElement("button", {

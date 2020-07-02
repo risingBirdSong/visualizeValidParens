@@ -7,8 +7,22 @@
 }
 
 .curbrace {
-  animation: pulse 400ms alternate ease;
+  animation: pulse 450ms alternate ease;
   color: blue;
+}
+@keyframes pulse {
+  0% {
+    /* background-color: #2f80ed; */
+    /* padding: 2px; */
+    transform: rotate(0.5turn);
+  }
+
+  100% {
+    transform: rotate(0.5turn);
+    color: whitesmoke;
+    /* transform: scale(2); */
+    /* padding: 5px; */
+  }
 }
 
 .highlitbrace-up {
@@ -31,6 +45,7 @@
   }
   100% {
     color: darkblue;
+
     /* padding: 5px; */
   }
 }
@@ -50,17 +65,20 @@
   }
 }
 
-@keyframes pulse {
+button:hover {
+  transform: scale(1.1, 1.1);
+  transition: 600ms ease;
+}
+
+/* .takestep:hover {
+
+} */
+
+@keyframes stepper {
   0% {
-    /* background-color: #2f80ed; */
-    border: 2px solid rebeccapurple;
-    background-color: azure;
-    /* padding: 2px; */
+    background-color: green;
   }
   100% {
-    border: 6px solid purple;
-    background-color: crimson;
-    color: whitesmoke;
-    /* padding: 5px; */
+    background-color: darkcyan;
   }
 }
