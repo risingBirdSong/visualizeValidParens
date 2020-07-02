@@ -1,13 +1,3 @@
-type parens = "[" | "]" | "(" | ")" | "{" | "}"
-
-interface lookupI {
-  "(": ")";
-  "[": "]";
-  "{": "}";
-}
-
-
-
 const validParens = (str: string): boolean => {
   if (str.length % 2 !== 0) {
     return false;
@@ -18,20 +8,19 @@ const validParens = (str: string): boolean => {
     "[": "]",
     "{": "}"
   }
-  let encounters = [];
+  let stack = [];
   for (let s of str) {
     if (!validStrings.includes(s)) {
       console.error("a non valid string character was passed");
       return false;
     }
     if (Object.keys(lookup).includes(s)) {
-      encounters.push(lookup[s])
+      stack.push(lookup[s])
     }
     else {
-      if (encounters.pop() === s) {
-        console.log('valid so far');
+      if (stack.pop() !== s) {
+        return false;
       }
-      else return false;
     }
   }
   return true;

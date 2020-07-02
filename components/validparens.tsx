@@ -2,6 +2,7 @@ import * as React from "react";
 import MyForm from "./form";
 import Algo from "./algo";
 import { LeftBrace, RightBrace } from "./brace";
+import VisualizeCode from "./visualizeCode";
 const ValidBraces = (): JSX.Element => {
   const [message, setMsg] = React.useState("");
   //todo reset algoStringback to "" - intial state
