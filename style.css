@@ -166,9 +166,21 @@ pre {
   /* full width */
   /* border: 1px solid black; */
 }
+/* .explaincontent {
+  width: 130%;
+} */
 
+#explainbraces {
+  /* justify-self: start; */
+}
 .bodyexplainbraces {
+}
+
+#explaincontent {
   width: auto;
+  /* position: absolute; */
+  /* left: 272px; */
+  /* left: -200px; */
 }
 
 .contain {

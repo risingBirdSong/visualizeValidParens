@@ -29662,7 +29662,7 @@ var ExplainBraces = function ExplainBraces() {
     className: "row"
   }, React.createElement("div", {
     id: "explainbraces",
-    className: "explainblock modal fade show col-md-6 justify-content-center",
+    className: "explainblock modal fade show col-md-6",
     tabIndex: -1,
     role: "dialog",
     "aria-labelledby": "ExplainBracesCenterTitle",
@@ -29671,12 +29671,19 @@ var ExplainBraces = function ExplainBraces() {
     className: "modal-dialog modal-dialog-centered",
     role: "document"
   }, React.createElement("div", {
-    className: "modal-content "
+    className: "modal-content",
+    id: "explaincontent",
+    style: {
+      position: "absolute",
+      left: -218
+    }
   }, React.createElement("div", {
     className: "modal-body bodyexplainbraces"
-  }, React.createElement("h1", {
+  }, React.createElement("div", {
     className: "text-center"
-  }, "hello")))))));
+  }, React.createElement("p", null, "valid braces are pairs of complementary braces, opening and closing."), React.createElement("label", {
+    htmlFor: ""
+  }, "example"), React.createElement("h3", null, "( )"), React.createElement("h3", null, "[]"), React.createElement("p", null, "any amount of other valid braces may be contained inside an outer pair of valid braces , so long as at each depth of nesting, the braces complement each other."))))))));
 };
 
 exports.default = ExplainBraces;
