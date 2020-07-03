@@ -90,3 +90,48 @@ button:hover {
     background-color: darkcyan;
   }
 }
+
+/* code block -------------------------------- */
+
+.codeblock {
+  border: 2px solid brown;
+  text-align: justify;
+  font-size: x-large;
+  /* wow great color lavenderblush */
+  background-color: lavenderblush;
+}
+.keyword {
+  color: blueviolet;
+}
+
+.operator {
+  color: blue;
+}
+
+.punctuation {
+  color: brown;
+}
+
+.builtin {
+  color: chocolate;
+}
+
+.parameter {
+  color: chocolate;
+}
+
+.number {
+  color: cornflowerblue;
+}
+
+.boolean {
+  color: hotpink;
+}
+
+.function {
+  color: crimson;
+}
+
+.string {
+  color: darkmagenta;
+}
