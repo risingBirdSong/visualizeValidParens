@@ -1,6 +1,7 @@
 import * as React from "react";
 import { LeftBrace, RightBrace, Space } from "./brace";
 import VisualizeCode from "./visualizeCode";
+import ExplainBraces from "./explainbraces";
 
 interface AlgoI {
   algoString: string;
@@ -22,7 +23,7 @@ const Algo = (props: AlgoI): JSX.Element => {
       <h1 className="alert alert-success">{props.algoString}</h1>
       {algoRunning ? (
         <div>
-          {finished ? <h3>algo finished</h3> : <h3>algo is underway</h3>}
+          {finished ? <h3>algo finished</h3> : ""}
           <div className="algo-display d-flex border border-primary container p-2 m-2">
             <div className="row m-1 p-1">
               <div className="col-4">
@@ -133,6 +134,13 @@ const Algo = (props: AlgoI): JSX.Element => {
           >
             Launch Code
           </button>
+          <button
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#explainbraces"
+          >
+            Explain Braces
+          </button>
         </div>
       </div>
       <div
@@ -143,6 +151,7 @@ const Algo = (props: AlgoI): JSX.Element => {
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true"
       ></div>
+      <ExplainBraces />
       <VisualizeCode />
     </div>
   );

@@ -163,14 +163,24 @@ pre {
 }
 
 .explain {
-  border: 1px solid black;
+  /* full width */
+  /* border: 1px solid black; */
+}
+
+.bodyexplainbraces {
+  width: auto;
 }
 
 .contain {
   border: 1px solid black;
+  border-radius: 3px;
   /* came across this, just learned that inline-block was exactly for this purpose, wow */
   /* https://stackoverflow.com/questions/450903/how-can-i-make-a-div-not-larger-than-its-contents */
   display: inline-block;
+}
+
+.contain button {
+  margin: 5px;
 }
 
 

@@ -29620,7 +29620,7 @@ function (_super) {
       className: "codeblock container modal fade show col-md-6 offset-md-2 justify-content-center",
       tabIndex: -1,
       role: "dialog",
-      "aria-labelledby": "exampleModalCenterTitle",
+      "aria-labelledby": "explainCodeCenterTitle",
       "aria-hidden": "true"
     }, React.createElement("div", {
       className: "modal-dialog modal-dialog-centered",
@@ -29636,7 +29636,51 @@ function (_super) {
 }(React.Component);
 
 exports.default = VisualizeCode;
-},{"react":"node_modules/react/index.js","prismjs":"node_modules/prismjs/prism.js","prismjs/components/prism-typescript":"node_modules/prismjs/components/prism-typescript.js"}],"components/algo.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","prismjs":"node_modules/prismjs/prism.js","prismjs/components/prism-typescript":"node_modules/prismjs/components/prism-typescript.js"}],"components/explainbraces.tsx":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var ExplainBraces = function ExplainBraces() {
+  return React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "row"
+  }, React.createElement("div", {
+    id: "explainbraces",
+    className: "explainblock modal fade show col-md-6 justify-content-center",
+    tabIndex: -1,
+    role: "dialog",
+    "aria-labelledby": "ExplainBracesCenterTitle",
+    "aria-hidden": "true"
+  }, React.createElement("div", {
+    className: "modal-dialog modal-dialog-centered",
+    role: "document"
+  }, React.createElement("div", {
+    className: "modal-content "
+  }, React.createElement("div", {
+    className: "modal-body bodyexplainbraces"
+  }, React.createElement("h1", {
+    className: "text-center"
+  }, "hello")))))));
+};
+
+exports.default = ExplainBraces;
+},{"react":"node_modules/react/index.js"}],"components/algo.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -29664,6 +29708,8 @@ var React = __importStar(require("react"));
 var brace_1 = require("./brace");
 
 var visualizeCode_1 = __importDefault(require("./visualizeCode"));
+
+var explainbraces_1 = __importDefault(require("./explainbraces"));
 
 var Algo = function Algo(props) {
   // todo reset algoRunning to false
@@ -29693,7 +29739,7 @@ var Algo = function Algo(props) {
 
   return React.createElement("div", null, React.createElement("h1", {
     className: "alert alert-success"
-  }, props.algoString), algoRunning ? React.createElement("div", null, finished ? React.createElement("h3", null, "algo finished") : React.createElement("h3", null, "algo is underway"), React.createElement("div", {
+  }, props.algoString), algoRunning ? React.createElement("div", null, finished ? React.createElement("h3", null, "algo finished") : "", React.createElement("div", {
     className: "algo-display d-flex border border-primary container p-2 m-2"
   }, React.createElement("div", {
     className: "row m-1 p-1"
@@ -29762,18 +29808,22 @@ var Algo = function Algo(props) {
     className: "btn btn-primary",
     "data-toggle": "modal",
     "data-target": "#thecodeblock"
-  }, "Launch Code"))), React.createElement("div", {
+  }, "Launch Code"), React.createElement("button", {
+    className: "btn btn-primary",
+    "data-toggle": "modal",
+    "data-target": "#explainbraces"
+  }, "Explain Braces"))), React.createElement("div", {
     className: "modal fade",
     id: "exampleModalCenter",
     tabIndex: -1,
     role: "dialog",
     "aria-labelledby": "exampleModalCenterTitle",
     "aria-hidden": "true"
-  }), React.createElement(visualizeCode_1.default, null));
+  }), React.createElement(explainbraces_1.default, null), React.createElement(visualizeCode_1.default, null));
 };
 
 exports.default = Algo;
-},{"react":"node_modules/react/index.js","./brace":"components/brace.tsx","./visualizeCode":"components/visualizeCode.tsx"}],"components/validparens.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./brace":"components/brace.tsx","./visualizeCode":"components/visualizeCode.tsx","./explainbraces":"components/explainbraces.tsx"}],"components/validparens.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {

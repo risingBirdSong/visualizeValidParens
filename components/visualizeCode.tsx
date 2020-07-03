@@ -55,7 +55,7 @@ class VisualizeCode extends React.Component {
             className="codeblock container modal fade show col-md-6 offset-md-2 justify-content-center"
             tabIndex={-1}
             role="dialog"
-            aria-labelledby="exampleModalCenterTitle"
+            aria-labelledby="explainCodeCenterTitle"
             aria-hidden="true"
           >
             <div className="modal-dialog modal-dialog-centered" role="document">
