@@ -29612,8 +29612,12 @@ function (_super) {
 
   VisualizeCode.prototype.render = function () {
     return React.createElement("div", {
+      className: "container "
+    }, React.createElement("div", {
+      className: "row"
+    }, React.createElement("div", {
       id: "thecodeblock",
-      className: "codeblock container modal fade",
+      className: "codeblock container modal fade col-md-6 offset-md-2 justify-content-center",
       tabIndex: -1,
       role: "dialog",
       "aria-labelledby": "exampleModalCenterTitle",
@@ -29625,7 +29629,7 @@ function (_super) {
       className: "modal-content"
     }, React.createElement("pre", null, React.createElement("code", {
       className: "modal-body language-ts"
-    }, this.represent())))));
+    }, this.represent())))))));
   };
 
   return VisualizeCode;

@@ -48,19 +48,32 @@ class VisualizeCode extends React.Component {
   }
   render() {
     return (
-      <div
-        id="thecodeblock"
-        className="codeblock container modal fade"
-        tabIndex={-1}
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <pre>
-              <code className="modal-body language-ts">{this.represent()}</code>
-            </pre>
+      <div className="container ">
+        <div className="row">
+          <div
+            id="thecodeblock"
+            className="codeblock container modal fade col-md-6 offset-md-2 justify-content-center"
+            tabIndex={-1}
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div
+                className="modal-content"
+                // style={{
+                //   width: "1400px",
+                //   height: "1000px",
+                //   backgroundColor: "beige",
+                // }}
+              >
+                <pre>
+                  <code className="modal-body language-ts">
+                    {this.represent()}
+                  </code>
+                </pre>
+              </div>
+            </div>
           </div>
         </div>
       </div>

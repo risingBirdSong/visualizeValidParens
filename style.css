@@ -96,8 +96,9 @@ button:hover {
 .codeblock {
   border: 2px solid brown;
   text-align: justify;
-  font-size: x-large;
+  font-size: large;
   /* wow great color lavenderblush */
+  width: 900px;
   background-color: lavenderblush;
 }
 .keyword {
@@ -134,4 +135,20 @@ button:hover {
 
 .string {
   color: darkmagenta;
+}
+
+/* .modal-body {
+  width: 1000px;
+} */
+
+.modal {
+  overflow: hidden;
+}
+
+.modal-content {
+  width: 120%;
+}
+
+pre {
+  overflow: hidden;
 }
