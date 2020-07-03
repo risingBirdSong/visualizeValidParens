@@ -48,11 +48,11 @@ class VisualizeCode extends React.Component {
   }
   render() {
     return (
-      <div className="container ">
-        <div className="row">
+      <div className="container">
+        <div className="row ">
           <div
             id="thecodeblock"
-            className="codeblock container modal fade col-md-6 offset-md-2 justify-content-center"
+            className="codeblock container modal fade show col-md-6 offset-md-2 justify-content-center"
             tabIndex={-1}
             role="dialog"
             aria-labelledby="exampleModalCenterTitle"
@@ -68,7 +68,7 @@ class VisualizeCode extends React.Component {
                 // }}
               >
                 <pre>
-                  <code className="modal-body language-ts">
+                  <code className="modal-body language-ts show">
                     {this.represent()}
                   </code>
                 </pre>

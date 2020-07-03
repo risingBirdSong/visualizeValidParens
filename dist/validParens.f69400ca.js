@@ -29612,12 +29612,12 @@ function (_super) {
 
   VisualizeCode.prototype.render = function () {
     return React.createElement("div", {
-      className: "container "
+      className: "container"
     }, React.createElement("div", {
-      className: "row"
+      className: "row "
     }, React.createElement("div", {
       id: "thecodeblock",
-      className: "codeblock container modal fade col-md-6 offset-md-2 justify-content-center",
+      className: "codeblock container modal fade show col-md-6 offset-md-2 justify-content-center",
       tabIndex: -1,
       role: "dialog",
       "aria-labelledby": "exampleModalCenterTitle",
@@ -29628,7 +29628,7 @@ function (_super) {
     }, React.createElement("div", {
       className: "modal-content"
     }, React.createElement("pre", null, React.createElement("code", {
-      className: "modal-body language-ts"
+      className: "modal-body language-ts show"
     }, this.represent())))))));
   };
 
@@ -29757,11 +29757,6 @@ var Algo = function Algo(props) {
     type: "button",
     className: "btn btn-primary",
     "data-toggle": "modal",
-    "data-target": "#exampleModalCenter"
-  }, "Launch demo modal"), React.createElement("button", {
-    type: "button",
-    className: "btn btn-primary",
-    "data-toggle": "modal",
     "data-target": "#thecodeblock"
   }, "Launch Code"), React.createElement("div", {
     className: "modal fade",
@@ -29770,35 +29765,7 @@ var Algo = function Algo(props) {
     role: "dialog",
     "aria-labelledby": "exampleModalCenterTitle",
     "aria-hidden": "true"
-  }, React.createElement("div", {
-    className: "modal-dialog modal-dialog-centered",
-    role: "document"
-  }, React.createElement("div", {
-    className: "modal-content"
-  }, React.createElement("div", {
-    className: "modal-header"
-  }, React.createElement("h5", {
-    className: "modal-title",
-    id: "exampleModalLongTitle"
-  }, "Modal title"), React.createElement("button", {
-    type: "button",
-    className: "close",
-    "data-dismiss": "modal",
-    "aria-label": "Close"
-  }, React.createElement("span", {
-    "aria-hidden": "true"
-  }, "\xD7"))), React.createElement("div", {
-    className: "modal-body"
-  }, "..."), React.createElement("div", {
-    className: "modal-footer"
-  }, React.createElement("button", {
-    type: "button",
-    className: "btn btn-secondary",
-    "data-dismiss": "modal"
-  }, "Close"), React.createElement("button", {
-    type: "button",
-    className: "btn btn-primary"
-  }, "Save changes"))))), React.createElement(visualizeCode_1.default, null));
+  }), React.createElement(visualizeCode_1.default, null));
 };
 
 exports.default = Algo;

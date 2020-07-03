@@ -98,7 +98,7 @@ button:hover {
   text-align: justify;
   font-size: large;
   /* wow great color lavenderblush */
-  width: 900px;
+  width: 1000px;
   background-color: lavenderblush;
 }
 .keyword {
@@ -137,18 +137,27 @@ button:hover {
   color: darkmagenta;
 }
 
-/* .modal-body {
+.modal-body {
   width: 1000px;
-} */
+  margin-left: -20px;
+}
 
 .modal {
-  overflow: hidden;
 }
 
 .modal-content {
   width: 120%;
+  margin-left: -20px;
+  /* overflow: hidden; */
 }
 
 pre {
+  overflow: hidden;
+  margin-left: -20px;
+  /* overflow: hidden; */
+}
+
+#thecodeblock {
+  margin-top: 40px;
   overflow: hidden;
 }
