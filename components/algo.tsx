@@ -123,14 +123,18 @@ const Algo = (props: AlgoI): JSX.Element => {
           run algorithm
         </button>
       )}
-      <button
-        type="button"
-        className="btn btn-primary"
-        data-toggle="modal"
-        data-target="#thecodeblock"
-      >
-        Launch Code
-      </button>
+      <div className="explain">
+        <div className="contain">
+          <button
+            type="button"
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#thecodeblock"
+          >
+            Launch Code
+          </button>
+        </div>
+      </div>
       <div
         className="modal fade"
         id="exampleModalCenter"

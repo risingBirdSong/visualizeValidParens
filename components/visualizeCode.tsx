@@ -68,7 +68,7 @@ class VisualizeCode extends React.Component {
                 // }}
               >
                 <pre>
-                  <code className="modal-body language-ts show">
+                  <code className="modal-body language-ts">
                     {this.represent()}
                   </code>
                 </pre>

@@ -29628,7 +29628,7 @@ function (_super) {
     }, React.createElement("div", {
       className: "modal-content"
     }, React.createElement("pre", null, React.createElement("code", {
-      className: "modal-body language-ts show"
+      className: "modal-body language-ts"
     }, this.represent())))))));
   };
 
@@ -29753,12 +29753,16 @@ var Algo = function Algo(props) {
     onClick: function onClick() {
       setRunning(true);
     }
-  }, "run algorithm"), React.createElement("button", {
+  }, "run algorithm"), React.createElement("div", {
+    className: "explain"
+  }, React.createElement("div", {
+    className: "contain"
+  }, React.createElement("button", {
     type: "button",
     className: "btn btn-primary",
     "data-toggle": "modal",
     "data-target": "#thecodeblock"
-  }, "Launch Code"), React.createElement("div", {
+  }, "Launch Code"))), React.createElement("div", {
     className: "modal fade",
     id: "exampleModalCenter",
     tabIndex: -1,

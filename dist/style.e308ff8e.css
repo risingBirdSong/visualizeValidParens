@@ -22,11 +22,11 @@
   }
   75% {
     /* color: white; */
-    transform: scale(2);
+    transform: scale(1.5);
   }
   87% {
     /* color: white; */
-    transform: scale(0.5);
+    transform: scale(0.7);
   }
   100% {
     transform: scale(1);
@@ -160,6 +160,17 @@ pre {
 #thecodeblock {
   margin-top: 40px;
   overflow: hidden;
+}
+
+.explain {
+  border: 1px solid black;
+}
+
+.contain {
+  border: 1px solid black;
+  /* came across this, just learned that inline-block was exactly for this purpose, wow */
+  /* https://stackoverflow.com/questions/450903/how-can-i-make-a-div-not-larger-than-its-contents */
+  display: inline-block;
 }
 
 
