@@ -59,7 +59,7 @@ class VisualizeCode extends React.Component {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <pre>
-              <code className="modal-body">{this.represent()}</code>
+              <code className="modal-body language-ts">{this.represent()}</code>
             </pre>
           </div>
         </div>

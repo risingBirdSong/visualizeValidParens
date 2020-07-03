@@ -29624,7 +29624,7 @@ function (_super) {
     }, React.createElement("div", {
       className: "modal-content"
     }, React.createElement("pre", null, React.createElement("code", {
-      className: "modal-body"
+      className: "modal-body language-ts"
     }, this.represent())))));
   };
 
