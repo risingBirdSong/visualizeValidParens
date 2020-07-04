@@ -29655,6 +29655,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var brace_1 = require("./brace");
+
 var ExplainBraces = function ExplainBraces() {
   return React.createElement("div", {
     className: "container"
@@ -29680,14 +29682,25 @@ var ExplainBraces = function ExplainBraces() {
   }, React.createElement("div", {
     className: "modal-body bodyexplainbraces"
   }, React.createElement("div", {
-    className: "text-center"
-  }, React.createElement("p", null, "valid braces are pairs of complementary braces, opening and closing."), React.createElement("label", {
-    htmlFor: ""
-  }, "example"), React.createElement("h3", null, "( )"), React.createElement("h3", null, "[]"), React.createElement("p", null, "any amount of other valid braces may be contained inside an outer pair of valid braces , so long as at each depth of nesting, the braces complement each other."))))))));
+    className: "text-center d-fled justify-content-center"
+  }, React.createElement("p", null, "valid braces are pairs of complementary braces, opening and closing."), React.createElement("p", null, "examples"), React.createElement("label", null, "a valid set of parenthesis"), React.createElement("h3", {
+    className: "p-1 mg-2 bg-info text-white"
+  }, "( ", React.createElement(brace_1.Space, null), " )"), React.createElement("label", null, "a valid set of curly braces"), React.createElement("h3", {
+    className: "p-1 mg-2 bg-primary text-white"
+  }, " ", React.createElement(brace_1.LeftBrace, null), React.createElement(brace_1.Space, null), React.createElement(brace_1.RightBrace, null)), React.createElement("label", null, "a valid set of array brackets"), React.createElement("h3", {
+    className: "p-1 mg-2 bg-success text-white"
+  }, "[", React.createElement(brace_1.Space, null), "]"), React.createElement("p", null, "any amount of other valid braces may be contained inside an outer pair of valid braces , so long as at each depth of nesting, the braces complement each other."), React.createElement("p", null, "take these braces for example :"), React.createElement("h3", null, "(", React.createElement(brace_1.LeftBrace, null), "[]", React.createElement(brace_1.RightBrace, null), ")"), React.createElement("p", null, "at each depth of nesting, each pair matches"), React.createElement("h3", {
+    style: {},
+    className: "p-1 mg-2 bg-info text-white"
+  }, "( ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " )"), React.createElement("h3", {
+    className: "p-1 mg-2 bg-primary text-white"
+  }, React.createElement(brace_1.LeftBrace, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.RightBrace, null)), React.createElement("h3", {
+    className: "p-1 mg-2 bg-success text-white"
+  }, "[ ]"))))))));
 };
 
 exports.default = ExplainBraces;
-},{"react":"node_modules/react/index.js"}],"components/algo.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./brace":"components/brace.tsx"}],"components/algo.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -30001,7 +30014,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63308" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58323" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
