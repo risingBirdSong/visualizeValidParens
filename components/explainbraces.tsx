@@ -27,7 +27,7 @@ const ExplainBraces = () => {
                     valid braces are pairs of complementary braces, opening and
                     closing.
                   </p>
-                  <p>examples</p>
+                  <h3>examples</h3>
                   <label>a valid set of parenthesis</label>
                   <h3 className="p-1 mg-2 bg-info text-white">
                     ( <Space /> )
@@ -43,6 +43,11 @@ const ExplainBraces = () => {
                   <label>a valid set of array brackets</label>
                   <h3 className="p-1 mg-2 bg-success text-white">
                     [<Space />]
+                  </h3>
+                  <p>an invalid pair of braces :</p>
+                  <h3 className="p-1 mg-2 bg-danger text-white">
+                    [ <Space />
+                    <Space />)
                   </h3>
                   <p>
                     any amount of other valid braces may be contained inside an
@@ -65,6 +70,7 @@ const ExplainBraces = () => {
                   <h3 className="p-1 mg-2 bg-success text-white">[ ]</h3>
                 </div>
                 {/* </div> */}
+                <p>therefore the whole set is valid</p>
               </div>
             </div>
           </div>

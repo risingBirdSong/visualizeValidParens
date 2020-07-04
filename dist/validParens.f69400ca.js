@@ -29683,20 +29683,22 @@ var ExplainBraces = function ExplainBraces() {
     className: "modal-body bodyexplainbraces"
   }, React.createElement("div", {
     className: "text-center d-fled justify-content-center"
-  }, React.createElement("p", null, "valid braces are pairs of complementary braces, opening and closing."), React.createElement("p", null, "examples"), React.createElement("label", null, "a valid set of parenthesis"), React.createElement("h3", {
+  }, React.createElement("p", null, "valid braces are pairs of complementary braces, opening and closing."), React.createElement("h3", null, "examples"), React.createElement("label", null, "a valid set of parenthesis"), React.createElement("h3", {
     className: "p-1 mg-2 bg-info text-white"
   }, "( ", React.createElement(brace_1.Space, null), " )"), React.createElement("label", null, "a valid set of curly braces"), React.createElement("h3", {
     className: "p-1 mg-2 bg-primary text-white"
   }, " ", React.createElement(brace_1.LeftBrace, null), React.createElement(brace_1.Space, null), React.createElement(brace_1.RightBrace, null)), React.createElement("label", null, "a valid set of array brackets"), React.createElement("h3", {
     className: "p-1 mg-2 bg-success text-white"
-  }, "[", React.createElement(brace_1.Space, null), "]"), React.createElement("p", null, "any amount of other valid braces may be contained inside an outer pair of valid braces , so long as at each depth of nesting, the braces complement each other."), React.createElement("p", null, "take these braces for example :"), React.createElement("h3", null, "(", React.createElement(brace_1.LeftBrace, null), "[]", React.createElement(brace_1.RightBrace, null), ")"), React.createElement("p", null, "at each depth of nesting, each pair matches"), React.createElement("h3", {
+  }, "[", React.createElement(brace_1.Space, null), "]"), React.createElement("p", null, "an invalid pair of braces :"), React.createElement("h3", {
+    className: "p-1 mg-2 bg-danger text-white"
+  }, "[ ", React.createElement(brace_1.Space, null), React.createElement(brace_1.Space, null), ")"), React.createElement("p", null, "any amount of other valid braces may be contained inside an outer pair of valid braces , so long as at each depth of nesting, the braces complement each other."), React.createElement("p", null, "take these braces for example :"), React.createElement("h3", null, "(", React.createElement(brace_1.LeftBrace, null), "[]", React.createElement(brace_1.RightBrace, null), ")"), React.createElement("p", null, "at each depth of nesting, each pair matches"), React.createElement("h3", {
     style: {},
     className: "p-1 mg-2 bg-info text-white"
   }, "( ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " )"), React.createElement("h3", {
     className: "p-1 mg-2 bg-primary text-white"
   }, React.createElement(brace_1.LeftBrace, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.Space, null), " ", React.createElement(brace_1.RightBrace, null)), React.createElement("h3", {
     className: "p-1 mg-2 bg-success text-white"
-  }, "[ ]"))))))));
+  }, "[ ]")), React.createElement("p", null, "therefore the whole set is valid")))))));
 };
 
 exports.default = ExplainBraces;
