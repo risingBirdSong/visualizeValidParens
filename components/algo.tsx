@@ -10,6 +10,8 @@ interface AlgoI {
 const Algo = (props: AlgoI): JSX.Element => {
   // todo reset algoRunning to false
   const [algoRunning, setRunning] = React.useState(true);
+  const [invalidMsg, setInvalid] = React.useState("");
+  const [validMsg, setValid] = React.useState("");
   const [toggle, setToggle] = React.useState(false);
   const [algoArrBacking, setAlgoBacking] = React.useState(
     Array.from(props.algoString)
@@ -34,14 +36,26 @@ const Algo = (props: AlgoI): JSX.Element => {
     if (Object.keys(lookup).includes(curBrace)) {
       let newStack = [...stack].concat(lookup[curBrace]);
       setStack(newStack);
+      return;
     }
-  }, [curBrace]);
+    const last = stack.pop();
+    console.log("last", last);
+    console.log("curbrace", curBrace);
+    if (last && curBrace && last !== curBrace) {
+      setInvalid("invalid braces!");
+      console.log("invalid");
+    } else if (last === curBrace) {
+      setValid("found a valid pair!");
+    }
+  }, [curBrace, curIdx]);
 
   return (
     <div>
       <h1 className="alert alert-success">{props.algoString}</h1>
       {algoRunning ? (
         <div>
+          {invalidMsg ? <h1 className="bg-danger">{invalidMsg}</h1> : ""}
+          {validMsg ? <h1 className="bg-success">{validMsg}</h1> : ""}
           {finished ? <h3>algo finished</h3> : ""}
           <div className="algo-display d-flex border border-primary container p-2 m-2">
             <div className="row m-1 p-1">
@@ -131,6 +145,7 @@ const Algo = (props: AlgoI): JSX.Element => {
                       setCurIdx(newIdx);
                       setCurBrace(algoArrBacking[newIdx]);
                       setToggle(!toggle);
+                      setValid("");
                     })()
                   : (() => {
                       finish(true);

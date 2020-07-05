@@ -29753,29 +29753,37 @@ var Algo = function Algo(props) {
       algoRunning = _a[0],
       setRunning = _a[1];
 
-  var _b = React.useState(false),
-      toggle = _b[0],
-      setToggle = _b[1];
+  var _b = React.useState(""),
+      invalidMsg = _b[0],
+      setInvalid = _b[1];
 
-  var _c = React.useState(Array.from(props.algoString)),
-      algoArrBacking = _c[0],
-      setAlgoBacking = _c[1];
+  var _c = React.useState(""),
+      validMsg = _c[0],
+      setValid = _c[1];
 
   var _d = React.useState(false),
-      finished = _d[0],
-      finish = _d[1];
+      toggle = _d[0],
+      setToggle = _d[1];
 
-  var _e = React.useState(-1),
-      curIdx = _e[0],
-      setCurIdx = _e[1];
+  var _e = React.useState(Array.from(props.algoString)),
+      algoArrBacking = _e[0],
+      setAlgoBacking = _e[1];
 
-  var _f = React.useState("undefined"),
-      curBrace = _f[0],
-      setCurBrace = _f[1];
+  var _f = React.useState(false),
+      finished = _f[0],
+      finish = _f[1];
 
-  var _g = React.useState([]),
-      stack = _g[0],
-      setStack = _g[1];
+  var _g = React.useState(-1),
+      curIdx = _g[0],
+      setCurIdx = _g[1];
+
+  var _h = React.useState("undefined"),
+      curBrace = _h[0],
+      setCurBrace = _h[1];
+
+  var _j = React.useState([]),
+      stack = _j[0],
+      setStack = _j[1];
 
   var lookup = {
     "(": ")",
@@ -29789,11 +29797,27 @@ var Algo = function Algo(props) {
       var newStack = __spreadArrays(stack).concat(lookup[curBrace]);
 
       setStack(newStack);
+      return;
     }
-  }, [curBrace]);
+
+    var last = stack.pop();
+    console.log("last", last);
+    console.log("curbrace", curBrace);
+
+    if (last && curBrace && last !== curBrace) {
+      setInvalid("invalid braces!");
+      console.log("invalid");
+    } else if (last === curBrace) {
+      setValid("found a valid pair!");
+    }
+  }, [curBrace, curIdx]);
   return React.createElement("div", null, React.createElement("h1", {
     className: "alert alert-success"
-  }, props.algoString), algoRunning ? React.createElement("div", null, finished ? React.createElement("h3", null, "algo finished") : "", React.createElement("div", {
+  }, props.algoString), algoRunning ? React.createElement("div", null, invalidMsg ? React.createElement("h1", {
+    className: "bg-danger"
+  }, invalidMsg) : "", validMsg ? React.createElement("h1", {
+    className: "bg-success"
+  }, validMsg) : "", finished ? React.createElement("h3", null, "algo finished") : "", React.createElement("div", {
     className: "algo-display d-flex border border-primary container p-2 m-2"
   }, React.createElement("div", {
     className: "row m-1 p-1"
@@ -29847,6 +29871,7 @@ var Algo = function Algo(props) {
         setCurIdx(newIdx);
         setCurBrace(algoArrBacking[newIdx]);
         setToggle(!toggle);
+        setValid("");
       }() : function () {
         finish(true);
         setCurIdx(-1);
@@ -29922,7 +29947,7 @@ var ValidBraces = function ValidBraces() {
       setMsg = _a[1]; //todo reset algoStringback to "" - intial state
 
 
-  var _b = React.useState("[][(())]{{}}"),
+  var _b = React.useState("([{([{}])}])"),
       algoString = _b[0],
       setAlgoString = _b[1];
 
