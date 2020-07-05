@@ -194,3 +194,8 @@ pre {
 .contain button {
   margin: 5px;
 }
+
+.stackItems {
+  font-size: 25px;
+  color: purple;
+}

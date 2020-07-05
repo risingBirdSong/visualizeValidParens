@@ -18,6 +18,25 @@ const Algo = (props: AlgoI): JSX.Element => {
   const [curIdx, setCurIdx] = React.useState(-1);
   const [curBrace, setCurBrace] = React.useState("undefined");
 
+  const [stack, setStack] = React.useState<string[]>([]);
+
+  const lookup: { [idx: string]: string } = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+  };
+
+  // if (curIdx === curIdx) {
+
+  // }
+
+  React.useEffect(() => {
+    if (Object.keys(lookup).includes(curBrace)) {
+      let newStack = [...stack].concat(lookup[curBrace]);
+      setStack(newStack);
+    }
+  }, [curBrace]);
+
   return (
     <div>
       <h1 className="alert alert-success">{props.algoString}</h1>
@@ -28,7 +47,21 @@ const Algo = (props: AlgoI): JSX.Element => {
             <div className="row m-1 p-1">
               <div className="col-4">
                 <label className="p-1 mg-2 bg-info text-white">stack</label>
-                <h3 className="stack">[ ]</h3>
+                <h1 className="stack">
+                  [{" "}
+                  {stack.map((val, idx, arr) => {
+                    return idx < arr.length - 1 ? (
+                      <span className="stackItems" key={`${val}${idx}`}>
+                        {val} ,{" "}
+                      </span>
+                    ) : (
+                      <span className="stackItems" key={`${val}${idx}`}>
+                        {val}
+                      </span>
+                    );
+                  })}{" "}
+                  ]
+                </h1>
               </div>
               <div className="col-4">
                 <label className="p-1 mg-2 bg-info text-white">

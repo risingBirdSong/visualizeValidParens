@@ -29705,6 +29705,20 @@ exports.default = ExplainBraces;
 },{"react":"node_modules/react/index.js","./brace":"components/brace.tsx"}],"components/algo.tsx":[function(require,module,exports) {
 "use strict";
 
+var __spreadArrays = this && this.__spreadArrays || function () {
+  for (var s = 0, i = 0, il = arguments.length; i < il; i++) {
+    s += arguments[i].length;
+  }
+
+  for (var r = Array(s), k = 0, i = 0; i < il; i++) {
+    for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {
+      r[k] = a[j];
+    }
+  }
+
+  return r;
+};
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
@@ -29759,6 +29773,24 @@ var Algo = function Algo(props) {
       curBrace = _f[0],
       setCurBrace = _f[1];
 
+  var _g = React.useState([]),
+      stack = _g[0],
+      setStack = _g[1];
+
+  var lookup = {
+    "(": ")",
+    "[": "]",
+    "{": "}"
+  }; // if (curIdx === curIdx) {
+  // }
+
+  React.useEffect(function () {
+    if (Object.keys(lookup).includes(curBrace)) {
+      var newStack = __spreadArrays(stack).concat(lookup[curBrace]);
+
+      setStack(newStack);
+    }
+  }, [curBrace]);
   return React.createElement("div", null, React.createElement("h1", {
     className: "alert alert-success"
   }, props.algoString), algoRunning ? React.createElement("div", null, finished ? React.createElement("h3", null, "algo finished") : "", React.createElement("div", {
@@ -29769,9 +29801,17 @@ var Algo = function Algo(props) {
     className: "col-4"
   }, React.createElement("label", {
     className: "p-1 mg-2 bg-info text-white"
-  }, "stack"), React.createElement("h3", {
+  }, "stack"), React.createElement("h1", {
     className: "stack"
-  }, "[ ]")), React.createElement("div", {
+  }, "[", " ", stack.map(function (val, idx, arr) {
+    return idx < arr.length - 1 ? React.createElement("span", {
+      className: "stackItems",
+      key: "" + val + idx
+    }, val, " ,", " ") : React.createElement("span", {
+      className: "stackItems",
+      key: "" + val + idx
+    }, val);
+  }), " ", "]")), React.createElement("div", {
     className: "col-4"
   }, React.createElement("label", {
     className: "p-1 mg-2 bg-info text-white"
@@ -30016,7 +30056,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58323" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64369" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

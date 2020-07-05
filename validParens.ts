@@ -13,7 +13,7 @@ const validParens = (str: string): boolean => {
     return false;
   }
   let validStrings = ["[", "]", "(", ")", "{", "}"];
-  let lookup: { [idx: string]: string } = {
+  const lookup: { [idx: string]: string } = {
     "(": ")",
     "[": "]",
     "{": "}"
