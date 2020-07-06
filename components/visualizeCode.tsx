@@ -52,7 +52,7 @@ class VisualizeCode extends React.Component {
         <div className="row ">
           <div
             id="thecodeblock"
-            className="codeblock container  modal fade show col-md-6 offset-md-2 justify-content-center"
+            className="codeblock container  modal fade show col-md-6 offset-md-2 "
             tabIndex={-1}
             role="dialog"
             aria-labelledby="explainCodeCenterTitle"
@@ -72,6 +72,9 @@ class VisualizeCode extends React.Component {
                   data-dismiss="modal"
                 >
                   close code modal{" "}
+                  <p className="p-1 m-1" style={{ fontSize: "15px" }}>
+                    (or click anywhere on lavender background)
+                  </p>
                 </button>
                 <pre>
                   <code className="modal-body language-ts">

@@ -61,6 +61,7 @@ const Algo = (props: AlgoI): JSX.Element => {
             <div className="row m-1 p-1">
               <div className="col-4">
                 <label className="p-1 mg-2 bg-info text-white">stack</label>
+
                 <h1 className="stack">
                   [{" "}
                   {stack.map((val, idx, arr) => {
