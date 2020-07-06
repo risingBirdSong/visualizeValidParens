@@ -52,7 +52,7 @@ class VisualizeCode extends React.Component {
         <div className="row ">
           <div
             id="thecodeblock"
-            className="codeblock container modal fade show col-md-6 offset-md-2 justify-content-center"
+            className="codeblock container  modal fade show col-md-6 offset-md-2 justify-content-center"
             tabIndex={-1}
             role="dialog"
             aria-labelledby="explainCodeCenterTitle"
@@ -67,6 +67,12 @@ class VisualizeCode extends React.Component {
                 //   backgroundColor: "beige",
                 // }}
               >
+                <button
+                  className="close justify-content-center btn btn-primary border border-warning m-2 p-2"
+                  data-dismiss="modal"
+                >
+                  close code modal{" "}
+                </button>
                 <pre>
                   <code className="modal-body language-ts">
                     {this.represent()}

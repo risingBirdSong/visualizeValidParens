@@ -29617,7 +29617,7 @@ function (_super) {
       className: "row "
     }, React.createElement("div", {
       id: "thecodeblock",
-      className: "codeblock container modal fade show col-md-6 offset-md-2 justify-content-center",
+      className: "codeblock container  modal fade show col-md-6 offset-md-2 justify-content-center",
       tabIndex: -1,
       role: "dialog",
       "aria-labelledby": "explainCodeCenterTitle",
@@ -29627,7 +29627,10 @@ function (_super) {
       role: "document"
     }, React.createElement("div", {
       className: "modal-content"
-    }, React.createElement("pre", null, React.createElement("code", {
+    }, React.createElement("button", {
+      className: "close justify-content-center btn btn-primary border border-warning m-2 p-2",
+      "data-dismiss": "modal"
+    }, "close code modal", " "), React.createElement("pre", null, React.createElement("code", {
       className: "modal-body language-ts"
     }, this.represent())))))));
   };
