@@ -29534,31 +29534,23 @@ Prism.languages.ts = Prism.languages.typescript;
 },{}],"components/visualizeCode.tsx":[function(require,module,exports) {
 "use strict";
 
-var __extends = this && this.__extends || function () {
-  var _extendStatics = function extendStatics(d, b) {
-    _extendStatics = Object.setPrototypeOf || {
-      __proto__: []
-    } instanceof Array && function (d, b) {
-      d.__proto__ = b;
-    } || function (d, b) {
-      for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-      }
-    };
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-    return _extendStatics(d, b);
-  };
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  return function (d, b) {
-    _extendStatics(d, b);
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-    function __() {
-      this.constructor = d;
-    }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
@@ -29588,58 +29580,67 @@ var prismjs_1 = __importDefault(require("prismjs"));
 require("prismjs/components/prism-typescript");
 
 var VisualizeCode =
-/** @class */
-function (_super) {
-  __extends(VisualizeCode, _super);
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(VisualizeCode, _React$Component);
 
   function VisualizeCode(props) {
-    var _this = _super.call(this, props) || this;
+    var _this;
 
-    _this.represent = _this.represent.bind(_this);
+    _classCallCheck(this, VisualizeCode);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(VisualizeCode).call(this, props));
+    _this.represent = _this.represent.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  VisualizeCode.prototype.represent = function () {
-    return "\n    const validParens = (str: string): boolean => {\n      if (str.length % 2 !== 0) {\n        return false;\n      }\n      let validStrings = [\"[\", \"]\", \"(\", \")\", \"{\", \"}\"];\n      let lookup: { [idx: string]: string } = {\n        \"(\": \")\",\n        \"[\": \"]\",\n        \"{\": \"}\"\n      }\n      let stack = [];\n      for (let s of str) {\n        if (!validStrings.includes(s)) {\n          console.error(\"a non valid string character was passed\");\n          return false;\n        }\n        if (Object.keys(lookup).includes(s)) {\n          stack.push(lookup[s])\n        }\n        else {\n          if (stack.pop() !== s) {\n            return false;\n          }\n        }\n      }\n      return true;\n    }\n";
-  };
-
-  VisualizeCode.prototype.componentDidMount = function () {
-    prismjs_1.default.highlightAll();
-  };
-
-  VisualizeCode.prototype.componentDidUpdate = function () {
-    prismjs_1.default.highlightAll();
-  };
-
-  VisualizeCode.prototype.render = function () {
-    return React.createElement("div", {
-      className: "container"
-    }, React.createElement("div", {
-      className: "row "
-    }, React.createElement("div", {
-      id: "thecodeblock",
-      className: "codeblock container  modal fade show col-md-6 offset-md-2 ",
-      tabIndex: -1,
-      role: "dialog",
-      "aria-labelledby": "explainCodeCenterTitle",
-      "aria-hidden": "true"
-    }, React.createElement("div", {
-      className: "modal-dialog modal-dialog-centered",
-      role: "document"
-    }, React.createElement("div", {
-      className: "modal-content"
-    }, React.createElement("button", {
-      className: "close justify-content-center btn btn-primary border border-warning m-2 p-2",
-      "data-dismiss": "modal"
-    }, "close code modal", " ", React.createElement("p", {
-      className: "p-1 m-1",
-      style: {
-        fontSize: "15px"
-      }
-    }, "(or click anywhere on lavender background)")), React.createElement("pre", null, React.createElement("code", {
-      className: "modal-body language-ts"
-    }, this.represent())))))));
-  };
+  _createClass(VisualizeCode, [{
+    key: "represent",
+    value: function represent() {
+      return "\n    const validParens = (str: string): boolean => {\n      if (str.length % 2 !== 0) {\n        return false;\n      }\n      let validStrings = [\"[\", \"]\", \"(\", \")\", \"{\", \"}\"];\n      let lookup: { [idx: string]: string } = {\n        \"(\": \")\",\n        \"[\": \"]\",\n        \"{\": \"}\"\n      }\n      let stack = [];\n      for (let s of str) {\n        if (!validStrings.includes(s)) {\n          console.error(\"a non valid string character was passed\");\n          return false;\n        }\n        if (Object.keys(lookup).includes(s)) {\n          stack.push(lookup[s])\n        }\n        else {\n          if (stack.pop() !== s) {\n            return false;\n          }\n        }\n      }\n      return true;\n    }\n";
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      prismjs_1.default.highlightAll();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      prismjs_1.default.highlightAll();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement("div", {
+        className: "container"
+      }, React.createElement("div", {
+        className: "row "
+      }, React.createElement("div", {
+        id: "thecodeblock",
+        className: "codeblock container  modal fade show col-md-6 offset-md-2 ",
+        tabIndex: -1,
+        role: "dialog",
+        "aria-labelledby": "explainCodeCenterTitle",
+        "aria-hidden": "true"
+      }, React.createElement("div", {
+        className: "modal-dialog modal-dialog-centered",
+        role: "document"
+      }, React.createElement("div", {
+        className: "modal-content"
+      }, React.createElement("button", {
+        className: "close justify-content-center btn btn-primary border border-warning m-2 p-2",
+        "data-dismiss": "modal"
+      }, "close code modal", " ", React.createElement("p", {
+        className: "p-1 m-1",
+        style: {
+          fontSize: "15px"
+        }
+      }, "(or click anywhere on lavender background)")), React.createElement("pre", null, React.createElement("code", {
+        className: "modal-body language-ts"
+      }, this.represent())))))));
+    }
+  }]);
 
   return VisualizeCode;
 }(React.Component);
@@ -74570,19 +74571,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 },{"@stardust-ui/react-component-ref":"node_modules/@stardust-ui/react-component-ref/dist/es/index.js","./addons/Confirm":"node_modules/semantic-ui-react/dist/es/addons/Confirm/index.js","./addons/MountNode":"node_modules/semantic-ui-react/dist/es/addons/MountNode/index.js","./addons/Pagination":"node_modules/semantic-ui-react/dist/es/addons/Pagination/index.js","./addons/Pagination/PaginationItem":"node_modules/semantic-ui-react/dist/es/addons/Pagination/PaginationItem.js","./addons/Portal":"node_modules/semantic-ui-react/dist/es/addons/Portal/index.js","./addons/Portal/PortalInner":"node_modules/semantic-ui-react/dist/es/addons/Portal/PortalInner.js","./addons/Radio":"node_modules/semantic-ui-react/dist/es/addons/Radio/index.js","./addons/Responsive":"node_modules/semantic-ui-react/dist/es/addons/Responsive/index.js","./addons/Select":"node_modules/semantic-ui-react/dist/es/addons/Select/index.js","./addons/TextArea":"node_modules/semantic-ui-react/dist/es/addons/TextArea/index.js","./addons/TransitionablePortal":"node_modules/semantic-ui-react/dist/es/addons/TransitionablePortal/index.js","./behaviors/Visibility":"node_modules/semantic-ui-react/dist/es/behaviors/Visibility/index.js","./collections/Breadcrumb":"node_modules/semantic-ui-react/dist/es/collections/Breadcrumb/index.js","./collections/Breadcrumb/BreadcrumbDivider":"node_modules/semantic-ui-react/dist/es/collections/Breadcrumb/BreadcrumbDivider.js","./collections/Breadcrumb/BreadcrumbSection":"node_modules/semantic-ui-react/dist/es/collections/Breadcrumb/BreadcrumbSection.js","./collections/Form":"node_modules/semantic-ui-react/dist/es/collections/Form/index.js","./collections/Form/FormButton":"node_modules/semantic-ui-react/dist/es/collections/Form/FormButton.js","./collections/Form/FormCheckbox":"node_modules/semantic-ui-react/dist/es/collections/Form/FormCheckbox.js","./collections/Form/FormDropdown":"node_modules/semantic-ui-react/dist/es/collections/Form/FormDropdown.js","./collections/Form/FormField":"node_modules/semantic-ui-react/dist/es/collections/Form/FormField.js","./collections/Form/FormGroup":"node_modules/semantic-ui-react/dist/es/collections/Form/FormGroup.js","./collections/Form/FormInput":"node_modules/semantic-ui-react/dist/es/collections/Form/FormInput.js","./collections/Form/FormRadio":"node_modules/semantic-ui-react/dist/es/collections/Form/FormRadio.js","./collections/Form/FormSelect":"node_modules/semantic-ui-react/dist/es/collections/Form/FormSelect.js","./collections/Form/FormTextArea":"node_modules/semantic-ui-react/dist/es/collections/Form/FormTextArea.js","./collections/Grid":"node_modules/semantic-ui-react/dist/es/collections/Grid/index.js","./collections/Grid/GridColumn":"node_modules/semantic-ui-react/dist/es/collections/Grid/GridColumn.js","./collections/Grid/GridRow":"node_modules/semantic-ui-react/dist/es/collections/Grid/GridRow.js","./collections/Menu":"node_modules/semantic-ui-react/dist/es/collections/Menu/index.js","./collections/Menu/MenuHeader":"node_modules/semantic-ui-react/dist/es/collections/Menu/MenuHeader.js","./collections/Menu/MenuItem":"node_modules/semantic-ui-react/dist/es/collections/Menu/MenuItem.js","./collections/Menu/MenuMenu":"node_modules/semantic-ui-react/dist/es/collections/Menu/MenuMenu.js","./collections/Message":"node_modules/semantic-ui-react/dist/es/collections/Message/index.js","./collections/Message/MessageContent":"node_modules/semantic-ui-react/dist/es/collections/Message/MessageContent.js","./collections/Message/MessageHeader":"node_modules/semantic-ui-react/dist/es/collections/Message/MessageHeader.js","./collections/Message/MessageItem":"node_modules/semantic-ui-react/dist/es/collections/Message/MessageItem.js","./collections/Message/MessageList":"node_modules/semantic-ui-react/dist/es/collections/Message/MessageList.js","./collections/Table":"node_modules/semantic-ui-react/dist/es/collections/Table/index.js","./collections/Table/TableBody":"node_modules/semantic-ui-react/dist/es/collections/Table/TableBody.js","./collections/Table/TableCell":"node_modules/semantic-ui-react/dist/es/collections/Table/TableCell.js","./collections/Table/TableFooter":"node_modules/semantic-ui-react/dist/es/collections/Table/TableFooter.js","./collections/Table/TableHeader":"node_modules/semantic-ui-react/dist/es/collections/Table/TableHeader.js","./collections/Table/TableHeaderCell":"node_modules/semantic-ui-react/dist/es/collections/Table/TableHeaderCell.js","./collections/Table/TableRow":"node_modules/semantic-ui-react/dist/es/collections/Table/TableRow.js","./elements/Button/Button":"node_modules/semantic-ui-react/dist/es/elements/Button/Button.js","./elements/Button/ButtonContent":"node_modules/semantic-ui-react/dist/es/elements/Button/ButtonContent.js","./elements/Button/ButtonGroup":"node_modules/semantic-ui-react/dist/es/elements/Button/ButtonGroup.js","./elements/Button/ButtonOr":"node_modules/semantic-ui-react/dist/es/elements/Button/ButtonOr.js","./elements/Container":"node_modules/semantic-ui-react/dist/es/elements/Container/index.js","./elements/Divider":"node_modules/semantic-ui-react/dist/es/elements/Divider/index.js","./elements/Flag":"node_modules/semantic-ui-react/dist/es/elements/Flag/index.js","./elements/Header":"node_modules/semantic-ui-react/dist/es/elements/Header/index.js","./elements/Header/HeaderContent":"node_modules/semantic-ui-react/dist/es/elements/Header/HeaderContent.js","./elements/Header/HeaderSubheader":"node_modules/semantic-ui-react/dist/es/elements/Header/HeaderSubheader.js","./elements/Icon":"node_modules/semantic-ui-react/dist/es/elements/Icon/index.js","./elements/Icon/IconGroup":"node_modules/semantic-ui-react/dist/es/elements/Icon/IconGroup.js","./elements/Image":"node_modules/semantic-ui-react/dist/es/elements/Image/index.js","./elements/Image/ImageGroup":"node_modules/semantic-ui-react/dist/es/elements/Image/ImageGroup.js","./elements/Input":"node_modules/semantic-ui-react/dist/es/elements/Input/index.js","./elements/Label":"node_modules/semantic-ui-react/dist/es/elements/Label/index.js","./elements/Label/LabelDetail":"node_modules/semantic-ui-react/dist/es/elements/Label/LabelDetail.js","./elements/Label/LabelGroup":"node_modules/semantic-ui-react/dist/es/elements/Label/LabelGroup.js","./elements/List":"node_modules/semantic-ui-react/dist/es/elements/List/index.js","./elements/List/ListContent":"node_modules/semantic-ui-react/dist/es/elements/List/ListContent.js","./elements/List/ListDescription":"node_modules/semantic-ui-react/dist/es/elements/List/ListDescription.js","./elements/List/ListHeader":"node_modules/semantic-ui-react/dist/es/elements/List/ListHeader.js","./elements/List/ListIcon":"node_modules/semantic-ui-react/dist/es/elements/List/ListIcon.js","./elements/List/ListItem":"node_modules/semantic-ui-react/dist/es/elements/List/ListItem.js","./elements/List/ListList":"node_modules/semantic-ui-react/dist/es/elements/List/ListList.js","./elements/Loader":"node_modules/semantic-ui-react/dist/es/elements/Loader/index.js","./elements/Placeholder":"node_modules/semantic-ui-react/dist/es/elements/Placeholder/index.js","./elements/Placeholder/PlaceholderHeader":"node_modules/semantic-ui-react/dist/es/elements/Placeholder/PlaceholderHeader.js","./elements/Placeholder/PlaceholderImage":"node_modules/semantic-ui-react/dist/es/elements/Placeholder/PlaceholderImage.js","./elements/Placeholder/PlaceholderLine":"node_modules/semantic-ui-react/dist/es/elements/Placeholder/PlaceholderLine.js","./elements/Placeholder/PlaceholderParagraph":"node_modules/semantic-ui-react/dist/es/elements/Placeholder/PlaceholderParagraph.js","./elements/Rail":"node_modules/semantic-ui-react/dist/es/elements/Rail/index.js","./elements/Reveal":"node_modules/semantic-ui-react/dist/es/elements/Reveal/index.js","./elements/Reveal/RevealContent":"node_modules/semantic-ui-react/dist/es/elements/Reveal/RevealContent.js","./elements/Segment":"node_modules/semantic-ui-react/dist/es/elements/Segment/index.js","./elements/Segment/SegmentGroup":"node_modules/semantic-ui-react/dist/es/elements/Segment/SegmentGroup.js","./elements/Segment/SegmentInline":"node_modules/semantic-ui-react/dist/es/elements/Segment/SegmentInline.js","./elements/Step":"node_modules/semantic-ui-react/dist/es/elements/Step/index.js","./elements/Step/StepContent":"node_modules/semantic-ui-react/dist/es/elements/Step/StepContent.js","./elements/Step/StepDescription":"node_modules/semantic-ui-react/dist/es/elements/Step/StepDescription.js","./elements/Step/StepGroup":"node_modules/semantic-ui-react/dist/es/elements/Step/StepGroup.js","./elements/Step/StepTitle":"node_modules/semantic-ui-react/dist/es/elements/Step/StepTitle.js","./modules/Accordion/Accordion":"node_modules/semantic-ui-react/dist/es/modules/Accordion/Accordion.js","./modules/Accordion/AccordionAccordion":"node_modules/semantic-ui-react/dist/es/modules/Accordion/AccordionAccordion.js","./modules/Accordion/AccordionContent":"node_modules/semantic-ui-react/dist/es/modules/Accordion/AccordionContent.js","./modules/Accordion/AccordionPanel":"node_modules/semantic-ui-react/dist/es/modules/Accordion/AccordionPanel.js","./modules/Accordion/AccordionTitle":"node_modules/semantic-ui-react/dist/es/modules/Accordion/AccordionTitle.js","./modules/Checkbox":"node_modules/semantic-ui-react/dist/es/modules/Checkbox/index.js","./modules/Dimmer":"node_modules/semantic-ui-react/dist/es/modules/Dimmer/index.js","./modules/Dimmer/DimmerDimmable":"node_modules/semantic-ui-react/dist/es/modules/Dimmer/DimmerDimmable.js","./modules/Dimmer/DimmerInner":"node_modules/semantic-ui-react/dist/es/modules/Dimmer/DimmerInner.js","./modules/Dropdown":"node_modules/semantic-ui-react/dist/es/modules/Dropdown/index.js","./modules/Dropdown/DropdownDivider":"node_modules/semantic-ui-react/dist/es/modules/Dropdown/DropdownDivider.js","./modules/Dropdown/DropdownHeader":"node_modules/semantic-ui-react/dist/es/modules/Dropdown/DropdownHeader.js","./modules/Dropdown/DropdownItem":"node_modules/semantic-ui-react/dist/es/modules/Dropdown/DropdownItem.js","./modules/Dropdown/DropdownMenu":"node_modules/semantic-ui-react/dist/es/modules/Dropdown/DropdownMenu.js","./modules/Dropdown/DropdownSearchInput":"node_modules/semantic-ui-react/dist/es/modules/Dropdown/DropdownSearchInput.js","./modules/Embed":"node_modules/semantic-ui-react/dist/es/modules/Embed/index.js","./modules/Modal":"node_modules/semantic-ui-react/dist/es/modules/Modal/index.js","./modules/Modal/ModalActions":"node_modules/semantic-ui-react/dist/es/modules/Modal/ModalActions.js","./modules/Modal/ModalContent":"node_modules/semantic-ui-react/dist/es/modules/Modal/ModalContent.js","./modules/Modal/ModalDescription":"node_modules/semantic-ui-react/dist/es/modules/Modal/ModalDescription.js","./modules/Modal/ModalHeader":"node_modules/semantic-ui-react/dist/es/modules/Modal/ModalHeader.js","./modules/Popup":"node_modules/semantic-ui-react/dist/es/modules/Popup/index.js","./modules/Popup/PopupContent":"node_modules/semantic-ui-react/dist/es/modules/Popup/PopupContent.js","./modules/Popup/PopupHeader":"node_modules/semantic-ui-react/dist/es/modules/Popup/PopupHeader.js","./modules/Progress":"node_modules/semantic-ui-react/dist/es/modules/Progress/index.js","./modules/Rating":"node_modules/semantic-ui-react/dist/es/modules/Rating/index.js","./modules/Rating/RatingIcon":"node_modules/semantic-ui-react/dist/es/modules/Rating/RatingIcon.js","./modules/Search":"node_modules/semantic-ui-react/dist/es/modules/Search/index.js","./modules/Search/SearchCategory":"node_modules/semantic-ui-react/dist/es/modules/Search/SearchCategory.js","./modules/Search/SearchResult":"node_modules/semantic-ui-react/dist/es/modules/Search/SearchResult.js","./modules/Search/SearchResults":"node_modules/semantic-ui-react/dist/es/modules/Search/SearchResults.js","./modules/Sidebar":"node_modules/semantic-ui-react/dist/es/modules/Sidebar/index.js","./modules/Sidebar/SidebarPushable":"node_modules/semantic-ui-react/dist/es/modules/Sidebar/SidebarPushable.js","./modules/Sidebar/SidebarPusher":"node_modules/semantic-ui-react/dist/es/modules/Sidebar/SidebarPusher.js","./modules/Sticky":"node_modules/semantic-ui-react/dist/es/modules/Sticky/index.js","./modules/Tab":"node_modules/semantic-ui-react/dist/es/modules/Tab/index.js","./modules/Tab/TabPane":"node_modules/semantic-ui-react/dist/es/modules/Tab/TabPane.js","./modules/Transition":"node_modules/semantic-ui-react/dist/es/modules/Transition/index.js","./modules/Transition/TransitionGroup":"node_modules/semantic-ui-react/dist/es/modules/Transition/TransitionGroup.js","./views/Advertisement":"node_modules/semantic-ui-react/dist/es/views/Advertisement/index.js","./views/Card/Card":"node_modules/semantic-ui-react/dist/es/views/Card/Card.js","./views/Card/CardContent":"node_modules/semantic-ui-react/dist/es/views/Card/CardContent.js","./views/Card/CardDescription":"node_modules/semantic-ui-react/dist/es/views/Card/CardDescription.js","./views/Card/CardGroup":"node_modules/semantic-ui-react/dist/es/views/Card/CardGroup.js","./views/Card/CardHeader":"node_modules/semantic-ui-react/dist/es/views/Card/CardHeader.js","./views/Card/CardMeta":"node_modules/semantic-ui-react/dist/es/views/Card/CardMeta.js","./views/Comment":"node_modules/semantic-ui-react/dist/es/views/Comment/index.js","./views/Comment/CommentAction":"node_modules/semantic-ui-react/dist/es/views/Comment/CommentAction.js","./views/Comment/CommentActions":"node_modules/semantic-ui-react/dist/es/views/Comment/CommentActions.js","./views/Comment/CommentAuthor":"node_modules/semantic-ui-react/dist/es/views/Comment/CommentAuthor.js","./views/Comment/CommentAvatar":"node_modules/semantic-ui-react/dist/es/views/Comment/CommentAvatar.js","./views/Comment/CommentContent":"node_modules/semantic-ui-react/dist/es/views/Comment/CommentContent.js","./views/Comment/CommentGroup":"node_modules/semantic-ui-react/dist/es/views/Comment/CommentGroup.js","./views/Comment/CommentMetadata":"node_modules/semantic-ui-react/dist/es/views/Comment/CommentMetadata.js","./views/Comment/CommentText":"node_modules/semantic-ui-react/dist/es/views/Comment/CommentText.js","./views/Feed":"node_modules/semantic-ui-react/dist/es/views/Feed/index.js","./views/Feed/FeedContent":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedContent.js","./views/Feed/FeedDate":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedDate.js","./views/Feed/FeedEvent":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedEvent.js","./views/Feed/FeedExtra":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedExtra.js","./views/Feed/FeedLabel":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedLabel.js","./views/Feed/FeedLike":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedLike.js","./views/Feed/FeedMeta":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedMeta.js","./views/Feed/FeedSummary":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedSummary.js","./views/Feed/FeedUser":"node_modules/semantic-ui-react/dist/es/views/Feed/FeedUser.js","./views/Item":"node_modules/semantic-ui-react/dist/es/views/Item/index.js","./views/Item/ItemContent":"node_modules/semantic-ui-react/dist/es/views/Item/ItemContent.js","./views/Item/ItemDescription":"node_modules/semantic-ui-react/dist/es/views/Item/ItemDescription.js","./views/Item/ItemExtra":"node_modules/semantic-ui-react/dist/es/views/Item/ItemExtra.js","./views/Item/ItemGroup":"node_modules/semantic-ui-react/dist/es/views/Item/ItemGroup.js","./views/Item/ItemHeader":"node_modules/semantic-ui-react/dist/es/views/Item/ItemHeader.js","./views/Item/ItemImage":"node_modules/semantic-ui-react/dist/es/views/Item/ItemImage.js","./views/Item/ItemMeta":"node_modules/semantic-ui-react/dist/es/views/Item/ItemMeta.js","./views/Statistic":"node_modules/semantic-ui-react/dist/es/views/Statistic/index.js","./views/Statistic/StatisticGroup":"node_modules/semantic-ui-react/dist/es/views/Statistic/StatisticGroup.js","./views/Statistic/StatisticLabel":"node_modules/semantic-ui-react/dist/es/views/Statistic/StatisticLabel.js","./views/Statistic/StatisticValue":"node_modules/semantic-ui-react/dist/es/views/Statistic/StatisticValue.js"}],"components/algo.tsx":[function(require,module,exports) {
 "use strict";
 
-var __spreadArrays = this && this.__spreadArrays || function () {
-  for (var s = 0, i = 0, il = arguments.length; i < il; i++) {
-    s += arguments[i].length;
-  }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
-  for (var r = Array(s), k = 0, i = 0; i < il; i++) {
-    for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {
-      r[k] = a[j];
-    }
-  }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-  return r;
-};
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
@@ -74615,45 +74618,55 @@ var explainbraces_1 = __importDefault(require("./explainbraces"));
 var semantic_ui_react_1 = require("semantic-ui-react");
 
 var Algo = function Algo(props) {
-  var _a = React.useState(true),
-      algoRunning = _a[0],
-      setRunning = _a[1];
+  var _React$useState = React.useState(true),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      algoRunning = _React$useState2[0],
+      setRunning = _React$useState2[1];
 
-  var _b = React.useState(""),
-      invalidMsg = _b[0],
-      setInvalid = _b[1];
+  var _React$useState3 = React.useState(""),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      invalidMsg = _React$useState4[0],
+      setInvalid = _React$useState4[1];
 
-  var _c = React.useState(""),
-      validMsg = _c[0],
-      setValid = _c[1];
+  var _React$useState5 = React.useState(""),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      validMsg = _React$useState6[0],
+      setValid = _React$useState6[1];
 
-  var _d = React.useState(false),
-      toggle = _d[0],
-      setToggle = _d[1];
+  var _React$useState7 = React.useState(false),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      toggle = _React$useState8[0],
+      setToggle = _React$useState8[1];
 
-  var _e = React.useState(Array.from(props.algoString)),
-      algoArrBacking = _e[0],
-      setAlgoBacking = _e[1];
+  var _React$useState9 = React.useState(Array.from(props.algoString)),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      algoArrBacking = _React$useState10[0],
+      setAlgoBacking = _React$useState10[1];
 
-  var _f = React.useState(false),
-      finished = _f[0],
-      finish = _f[1];
+  var _React$useState11 = React.useState(false),
+      _React$useState12 = _slicedToArray(_React$useState11, 2),
+      finished = _React$useState12[0],
+      finish = _React$useState12[1];
 
-  var _g = React.useState(-1),
-      curIdx = _g[0],
-      setCurIdx = _g[1];
+  var _React$useState13 = React.useState(-1),
+      _React$useState14 = _slicedToArray(_React$useState13, 2),
+      curIdx = _React$useState14[0],
+      setCurIdx = _React$useState14[1];
 
-  var _h = React.useState("undefined"),
-      curBrace = _h[0],
-      setCurBrace = _h[1];
+  var _React$useState15 = React.useState("undefined"),
+      _React$useState16 = _slicedToArray(_React$useState15, 2),
+      curBrace = _React$useState16[0],
+      setCurBrace = _React$useState16[1];
 
-  var _j = React.useState([]),
-      stack = _j[0],
-      setStack = _j[1];
+  var _React$useState17 = React.useState([]),
+      _React$useState18 = _slicedToArray(_React$useState17, 2),
+      stack = _React$useState18[0],
+      setStack = _React$useState18[1];
 
-  var _k = React.useState(""),
-      justPopped = _k[0],
-      setPop = _k[1];
+  var _React$useState19 = React.useState(""),
+      _React$useState20 = _slicedToArray(_React$useState19, 2),
+      justPopped = _React$useState20[0],
+      setPop = _React$useState20[1];
 
   var lookup = {
     "(": ")",
@@ -74664,7 +74677,7 @@ var Algo = function Algo(props) {
 
   React.useEffect(function () {
     if (Object.keys(lookup).includes(curBrace)) {
-      var newStack = __spreadArrays(stack).concat(lookup[curBrace]);
+      var newStack = _toConsumableArray(stack).concat(lookup[curBrace]);
 
       setStack(newStack);
       return;
@@ -74744,10 +74757,10 @@ var Algo = function Algo(props) {
   }, "[", " ", stack.map(function (val, idx, arr) {
     return idx < arr.length - 1 ? React.createElement("span", {
       className: "stackItems",
-      key: "" + val + idx
+      key: "".concat(val).concat(idx)
     }, val, " ,", " ") : React.createElement("span", {
       className: "stackItems",
-      key: "" + val + idx
+      key: "".concat(val).concat(idx)
     }, val);
   }), " ", justPopped ? React.createElement("span", {
     className: "justpopped"
@@ -74837,6 +74850,14 @@ exports.default = Algo;
 },{"react":"node_modules/react/index.js","./brace":"components/brace.tsx","./visualizeCode":"components/visualizeCode.tsx","./explainbraces":"components/explainbraces.tsx","semantic-ui-react":"node_modules/semantic-ui-react/dist/es/index.js"}],"components/validparens.tsx":[function(require,module,exports) {
 "use strict";
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
@@ -74866,18 +74887,21 @@ var algo_1 = __importDefault(require("./algo"));
 var brace_1 = require("./brace");
 
 var ValidBraces = function ValidBraces() {
-  var _a = React.useState(""),
-      message = _a[0],
-      setMsg = _a[1]; //todo reset algoStringback to "" - intial state
+  var _React$useState = React.useState(""),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      message = _React$useState2[0],
+      setMsg = _React$useState2[1]; //todo reset algoStringback to "" - intial state
 
 
-  var _b = React.useState(""),
-      algoString = _b[0],
-      setAlgoString = _b[1];
+  var _React$useState3 = React.useState(""),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      algoString = _React$useState4[0],
+      setAlgoString = _React$useState4[1];
 
-  var _c = React.useState(""),
-      formState = _c[0],
-      setFormState = _c[1];
+  var _React$useState5 = React.useState(""),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      formState = _React$useState6[0],
+      setFormState = _React$useState6[1];
 
   return React.createElement("div", {
     className: "text-center container"
