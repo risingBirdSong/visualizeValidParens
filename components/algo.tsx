@@ -39,14 +39,41 @@ const Algo = (props: AlgoI): JSX.Element => {
       setStack(newStack);
       return;
     }
+
     const last = stack.pop();
-    setPop(last);
-    setTimeout(() => {
-      setPop("");
-    }, 1000);
+    if (!last && curIdx >= 0) {
+      setInvalid(
+        "invalid! a closing brace was encountered before its opening brace! algo is being reset."
+      );
+      finish(true);
+      setCurIdx(-1);
+      setCurBrace("");
+      setAlgoBacking(Array.from(props.algoString));
+      setTimeout(() => {
+        setInvalid("");
+        setRunning(true);
+        finish(false);
+      }, 4000);
+    }
+    if (!finished) {
+      setPop(last);
+      setTimeout(() => {
+        setPop("");
+      }, 1000);
+    }
     if (last && curBrace && last !== curBrace) {
-      setInvalid("invalid braces!");
-      console.log("invalid");
+      setInvalid(
+        "invalid braces! the braces don't match! the algo is being reset"
+      );
+      finish(true);
+      setCurIdx(-1);
+      setCurBrace("");
+      setAlgoBacking(Array.from(props.algoString));
+      setTimeout(() => {
+        setInvalid("");
+        setRunning(true);
+        finish(false);
+      }, 4000);
     } else if (last === curBrace) {
       setValid("found a valid pair!");
       setTimeout(() => {
@@ -58,7 +85,7 @@ const Algo = (props: AlgoI): JSX.Element => {
   return (
     <div>
       <h1 className="alert alert-success">{props.algoString}</h1>
-      {algoRunning ? (
+      {
         <div>
           {invalidMsg ? <h1 className="bg-danger">{invalidMsg}</h1> : ""}
           {validMsg ? <h1 className="bg-success">{validMsg}</h1> : ""}
@@ -173,7 +200,7 @@ const Algo = (props: AlgoI): JSX.Element => {
                   finish(false);
                 }
                 let newIdx = curIdx + 1;
-                curIdx < algoArrBacking.length - 2
+                curIdx < algoArrBacking.length - 1
                   ? (() => {
                       setCurIdx(newIdx);
                       setCurBrace(algoArrBacking[newIdx]);
@@ -181,12 +208,20 @@ const Algo = (props: AlgoI): JSX.Element => {
                       setValid("");
                     })()
                   : (() => {
-                      console.log("stack length", stack.length);
-                      if (stack.length > 1) {
+                      if (stack.length > 0) {
                         setInvalid(
-                          "there are braces still in the stack, the parens are invalid!"
+                          "there are braces still in the stack, the parens are invalid! the algo is being reset"
                         );
-                      } else if (stack.length === 1) {
+                        finish(true);
+                        setCurIdx(-1);
+                        setCurBrace("");
+                        setAlgoBacking(Array.from(props.algoString));
+                        setTimeout(() => {
+                          setInvalid("");
+                          setRunning(true);
+                          finish(false);
+                        }, 4000);
+                      } else if (stack.length === 0) {
                         setValid(
                           "the stack has been cleared! the parens are valid!"
                         );
@@ -200,21 +235,9 @@ const Algo = (props: AlgoI): JSX.Element => {
             >
               take single step
             </button>
-            <button className="btn btn-outline-primary p-2 m-2">
-              auto mode
-            </button>
           </div>
         </div>
-      ) : (
-        <button
-          className="btn btn-outline-primary p-1 m-1"
-          onClick={() => {
-            setRunning(true);
-          }}
-        >
-          run algorithm
-        </button>
-      )}
+      }
       <div className="explain">
         <div className="contain">
           <button

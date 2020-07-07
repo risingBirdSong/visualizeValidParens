@@ -74671,14 +74671,38 @@ var Algo = function Algo(props) {
     }
 
     var last = stack.pop();
-    setPop(last);
-    setTimeout(function () {
-      setPop("");
-    }, 1000);
+
+    if (!last && curIdx >= 0) {
+      setInvalid("invalid! a closing brace was encountered before its opening brace! algo is being reset.");
+      finish(true);
+      setCurIdx(-1);
+      setCurBrace("");
+      setAlgoBacking(Array.from(props.algoString));
+      setTimeout(function () {
+        setInvalid("");
+        setRunning(true);
+        finish(false);
+      }, 4000);
+    }
+
+    if (!finished) {
+      setPop(last);
+      setTimeout(function () {
+        setPop("");
+      }, 1000);
+    }
 
     if (last && curBrace && last !== curBrace) {
-      setInvalid("invalid braces!");
-      console.log("invalid");
+      setInvalid("invalid braces! the braces don't match! the algo is being reset");
+      finish(true);
+      setCurIdx(-1);
+      setCurBrace("");
+      setAlgoBacking(Array.from(props.algoString));
+      setTimeout(function () {
+        setInvalid("");
+        setRunning(true);
+        finish(false);
+      }, 4000);
     } else if (last === curBrace) {
       setValid("found a valid pair!");
       setTimeout(function () {
@@ -74688,7 +74712,7 @@ var Algo = function Algo(props) {
   }, [curBrace, curIdx]);
   return React.createElement("div", null, React.createElement("h1", {
     className: "alert alert-success"
-  }, props.algoString), algoRunning ? React.createElement("div", null, invalidMsg ? React.createElement("h1", {
+  }, props.algoString), React.createElement("div", null, invalidMsg ? React.createElement("h1", {
     className: "bg-danger"
   }, invalidMsg) : "", validMsg ? React.createElement("h1", {
     className: "bg-success"
@@ -74759,17 +74783,24 @@ var Algo = function Algo(props) {
       }
 
       var newIdx = curIdx + 1;
-      curIdx < algoArrBacking.length - 2 ? function () {
+      curIdx < algoArrBacking.length - 1 ? function () {
         setCurIdx(newIdx);
         setCurBrace(algoArrBacking[newIdx]);
         setToggle(!toggle);
         setValid("");
       }() : function () {
-        console.log("stack length", stack.length);
-
-        if (stack.length > 1) {
-          setInvalid("there are braces still in the stack, the parens are invalid!");
-        } else if (stack.length === 1) {
+        if (stack.length > 0) {
+          setInvalid("there are braces still in the stack, the parens are invalid! the algo is being reset");
+          finish(true);
+          setCurIdx(-1);
+          setCurBrace("");
+          setAlgoBacking(Array.from(props.algoString));
+          setTimeout(function () {
+            setInvalid("");
+            setRunning(true);
+            finish(false);
+          }, 4000);
+        } else if (stack.length === 0) {
           setValid("the stack has been cleared! the parens are valid!");
         }
 
@@ -74779,14 +74810,7 @@ var Algo = function Algo(props) {
       }();
     },
     className: "takestep btn btn-outline-success p-2 m-2"
-  }, "take single step"), React.createElement("button", {
-    className: "btn btn-outline-primary p-2 m-2"
-  }, "auto mode"))) : React.createElement("button", {
-    className: "btn btn-outline-primary p-1 m-1",
-    onClick: function onClick() {
-      setRunning(true);
-    }
-  }, "run algorithm"), React.createElement("div", {
+  }, "take single step"))), React.createElement("div", {
     className: "explain"
   }, React.createElement("div", {
     className: "contain"
@@ -74847,7 +74871,7 @@ var ValidBraces = function ValidBraces() {
       setMsg = _a[1]; //todo reset algoStringback to "" - intial state
 
 
-  var _b = React.useState("([{([{}])}])"),
+  var _b = React.useState(""),
       algoString = _b[0],
       setAlgoString = _b[1];
 
@@ -74981,7 +75005,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60780" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65392" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
