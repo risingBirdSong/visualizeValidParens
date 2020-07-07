@@ -233,7 +233,9 @@ const Algo = (props: AlgoI): JSX.Element => {
               }}
               className="takestep btn btn-outline-success p-2 m-2"
             >
-              take single step
+              {curIdx < algoArrBacking.length - 1
+                ? "take single step"
+                : "take last step"}
             </button>
           </div>
         </div>

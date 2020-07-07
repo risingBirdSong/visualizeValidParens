@@ -74810,7 +74810,7 @@ var Algo = function Algo(props) {
       }();
     },
     className: "takestep btn btn-outline-success p-2 m-2"
-  }, "take single step"))), React.createElement("div", {
+  }, curIdx < algoArrBacking.length - 1 ? "take single step" : "take last step"))), React.createElement("div", {
     className: "explain"
   }, React.createElement("div", {
     className: "contain"
