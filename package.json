@@ -6,6 +6,7 @@
   "scripts": {
     "start": "parcel index.html"
   },
+  "type": "module",
   "dependencies": {
     "@types/react-dom": "^16.9.8",
     "prismjs": "^1.20.0",
