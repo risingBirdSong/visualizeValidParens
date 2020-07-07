@@ -182,6 +182,16 @@ const Algo = (props: AlgoI): JSX.Element => {
                       setValid("");
                     })()
                   : (() => {
+                      console.log("stack length", stack.length);
+                      if (stack.length > 0) {
+                        setInvalid(
+                          "there are braces still in the stack, the parens are invalid!"
+                        );
+                      } else if (stack.length === 0) {
+                        setValid(
+                          "the stack has been cleared! the parens are valid!"
+                        );
+                      }
                       finish(true);
                       setCurIdx(-1);
                       setCurBrace("");
