@@ -9,7 +9,6 @@ interface AlgoI {
 }
 
 const Algo = (props: AlgoI): JSX.Element => {
-  // todo reset algoRunning to false
   const [algoRunning, setRunning] = React.useState(true);
   const [invalidMsg, setInvalid] = React.useState("");
   const [validMsg, setValid] = React.useState("");
@@ -174,7 +173,7 @@ const Algo = (props: AlgoI): JSX.Element => {
                   finish(false);
                 }
                 let newIdx = curIdx + 1;
-                curIdx < algoArrBacking.length - 1
+                curIdx < algoArrBacking.length - 2
                   ? (() => {
                       setCurIdx(newIdx);
                       setCurBrace(algoArrBacking[newIdx]);
@@ -183,11 +182,11 @@ const Algo = (props: AlgoI): JSX.Element => {
                     })()
                   : (() => {
                       console.log("stack length", stack.length);
-                      if (stack.length > 0) {
+                      if (stack.length > 1) {
                         setInvalid(
                           "there are braces still in the stack, the parens are invalid!"
                         );
-                      } else if (stack.length === 0) {
+                      } else if (stack.length === 1) {
                         setValid(
                           "the stack has been cleared! the parens are valid!"
                         );

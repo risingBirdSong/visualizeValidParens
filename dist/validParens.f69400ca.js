@@ -74615,7 +74615,6 @@ var explainbraces_1 = __importDefault(require("./explainbraces"));
 var semantic_ui_react_1 = require("semantic-ui-react");
 
 var Algo = function Algo(props) {
-  // todo reset algoRunning to false
   var _a = React.useState(true),
       algoRunning = _a[0],
       setRunning = _a[1];
@@ -74760,7 +74759,7 @@ var Algo = function Algo(props) {
       }
 
       var newIdx = curIdx + 1;
-      curIdx < algoArrBacking.length - 1 ? function () {
+      curIdx < algoArrBacking.length - 2 ? function () {
         setCurIdx(newIdx);
         setCurBrace(algoArrBacking[newIdx]);
         setToggle(!toggle);
@@ -74768,9 +74767,9 @@ var Algo = function Algo(props) {
       }() : function () {
         console.log("stack length", stack.length);
 
-        if (stack.length > 0) {
+        if (stack.length > 1) {
           setInvalid("there are braces still in the stack, the parens are invalid!");
-        } else if (stack.length === 0) {
+        } else if (stack.length === 1) {
           setValid("the stack has been cleared! the parens are valid!");
         }
 
