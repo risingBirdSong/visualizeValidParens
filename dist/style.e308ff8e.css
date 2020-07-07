@@ -200,5 +200,36 @@ pre {
   color: purple;
 }
 
+.justpopped {
+  animation: popping 1s ease;
+
+  color: #800080;
+  position: absolute;
+  margin-right: 100px;
+}
+
+@keyframes popping {
+  10% {
+    opacity: 0.9;
+    margin-top: -10px;
+  }
+  30% {
+    opacity: 0.7;
+    margin-top: -20px;
+  }
+  50% {
+    opacity: 0.5;
+    margin-top: -30px;
+  }
+  80% {
+    opacity: 0.3;
+    margin-top: -45px;
+  }
+  100% {
+    opacity: 0;
+    margin-top: -60px;
+  }
+}
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

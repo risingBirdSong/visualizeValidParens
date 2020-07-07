@@ -22,6 +22,7 @@ const Algo = (props: AlgoI): JSX.Element => {
   const [curBrace, setCurBrace] = React.useState("undefined");
 
   const [stack, setStack] = React.useState<string[]>([]);
+  const [justPopped, setPop] = React.useState<string | undefined>("");
 
   const lookup: { [idx: string]: string } = {
     "(": ")",
@@ -40,13 +41,18 @@ const Algo = (props: AlgoI): JSX.Element => {
       return;
     }
     const last = stack.pop();
-    console.log("last", last);
-    console.log("curbrace", curBrace);
+    setPop(last);
+    setTimeout(() => {
+      setPop("");
+    }, 1000);
     if (last && curBrace && last !== curBrace) {
       setInvalid("invalid braces!");
       console.log("invalid");
     } else if (last === curBrace) {
       setValid("found a valid pair!");
+      setTimeout(() => {
+        setValid("");
+      }, 1000);
     }
   }, [curBrace, curIdx]);
 
@@ -69,9 +75,10 @@ const Algo = (props: AlgoI): JSX.Element => {
                     width: "250px",
                     fontSize: "20px",
                   }}
-                  position="bottom center"
+                  position="left center"
+                  offset={"0, 15px"}
                   className="p-1 mg-2 bg-info text-white"
-                  content="each time an opening brace is encountered, the corresponding closing brace is added here on the stack. "
+                  content="each time an opening brace is encountered, the corresponding closing brace is pushed onto the stack. when a closing brace is encountered, it is compared to the top of the stack, if they match it is a valid brace and the stack is popped, if they don't match, the braces are invalid"
                   trigger={
                     <Button
                       content="stack"
@@ -96,6 +103,11 @@ const Algo = (props: AlgoI): JSX.Element => {
                       </span>
                     );
                   })}{" "}
+                  {justPopped ? (
+                    <span className="justpopped">{justPopped}</span>
+                  ) : (
+                    ""
+                  )}
                   ]
                 </h1>
               </div>

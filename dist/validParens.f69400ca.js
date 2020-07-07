@@ -74652,6 +74652,10 @@ var Algo = function Algo(props) {
       stack = _j[0],
       setStack = _j[1];
 
+  var _k = React.useState(""),
+      justPopped = _k[0],
+      setPop = _k[1];
+
   var lookup = {
     "(": ")",
     "[": "]",
@@ -74668,14 +74672,19 @@ var Algo = function Algo(props) {
     }
 
     var last = stack.pop();
-    console.log("last", last);
-    console.log("curbrace", curBrace);
+    setPop(last);
+    setTimeout(function () {
+      setPop("");
+    }, 1000);
 
     if (last && curBrace && last !== curBrace) {
       setInvalid("invalid braces!");
       console.log("invalid");
     } else if (last === curBrace) {
       setValid("found a valid pair!");
+      setTimeout(function () {
+        setValid("");
+      }, 1000);
     }
   }, [curBrace, curIdx]);
   return React.createElement("div", null, React.createElement("h1", {
@@ -74698,9 +74707,10 @@ var Algo = function Algo(props) {
       width: "250px",
       fontSize: "20px"
     },
-    position: "bottom center",
+    position: "left center",
+    offset: "0, 15px",
     className: "p-1 mg-2 bg-info text-white",
-    content: "each time an opening brace is encountered, the corresponding closing brace is added here on the stack. ",
+    content: "each time an opening brace is encountered, the corresponding closing brace is pushed onto the stack. when a closing brace is encountered, it is compared to the top of the stack, if they match it is a valid brace and the stack is popped, if they don't match, the braces are invalid",
     trigger: React.createElement(semantic_ui_react_1.Button, {
       content: "stack",
       className: "btn btn-outline-primary p-2 m-2",
@@ -74716,7 +74726,9 @@ var Algo = function Algo(props) {
       className: "stackItems",
       key: "" + val + idx
     }, val);
-  }), " ", "]")), React.createElement("div", {
+  }), " ", justPopped ? React.createElement("span", {
+    className: "justpopped"
+  }, justPopped) : "", "]")), React.createElement("div", {
     className: "col-4"
   }, React.createElement("label", {
     className: "p-1 mg-2 bg-info text-white"
