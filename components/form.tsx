@@ -36,7 +36,7 @@ const Form = (props: FormI): JSX.Element => {
         <div className="col"></div>
         <form className="col">
           <div className="form-group">
-            <label>input a string of braces</label>
+            <label> please input a string of braces</label>
             <input
               className="form-control"
               value={props.formStr}
