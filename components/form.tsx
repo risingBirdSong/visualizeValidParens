@@ -36,7 +36,10 @@ const Form = (props: FormI): JSX.Element => {
         <div className="col"></div>
         <form className="col">
           <div className="form-group">
-            <label>input a string of braces</label>
+            <label className="p-1 m-1">
+              {" "}
+              please input a string of braces, valid or invalid
+            </label>
             <input
               className="form-control"
               value={props.formStr}

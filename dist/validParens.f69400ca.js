@@ -28334,7 +28334,9 @@ var Form = function Form(props) {
     className: "col"
   }, React.createElement("div", {
     className: "form-group"
-  }, React.createElement("label", null, "input a string"), React.createElement("input", {
+  }, React.createElement("label", {
+    className: "p-1 m-1"
+  }, " ", "please input a string of braces, valid or invalid"), React.createElement("input", {
     className: "form-control",
     value: props.formStr,
     onChange: function onChange(e) {
@@ -75029,7 +75031,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65392" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59201" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
