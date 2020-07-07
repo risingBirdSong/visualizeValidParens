@@ -2,6 +2,7 @@ import * as React from "react";
 import { LeftBrace, RightBrace, Space } from "./brace";
 import VisualizeCode from "./visualizeCode";
 import ExplainBraces from "./explainbraces";
+import { Button, Popup } from "semantic-ui-react";
 
 interface AlgoI {
   algoString: string;
@@ -60,8 +61,28 @@ const Algo = (props: AlgoI): JSX.Element => {
           <div className="algo-display d-flex border border-primary container p-2 m-2">
             <div className="row m-1 p-1">
               <div className="col-4">
-                <label className="p-1 mg-2 bg-info text-white">stack</label>
-
+                <Popup
+                  style={{
+                    border: "2px solid black",
+                    margin: "3px",
+                    padding: "3px",
+                    width: "250px",
+                    fontSize: "20px",
+                  }}
+                  position="bottom center"
+                  className="p-1 mg-2 bg-info text-white"
+                  content="each time an opening brace is encountered, the corresponding closing brace is added here on the stack. "
+                  trigger={
+                    <Button
+                      content="stack"
+                      className="btn btn-outline-primary p-2 m-2"
+                      icon={"add"}
+                    />
+                  }
+                />
+                {/* <button className="ui icon button">
+                  <i aria-hidden="true" className="add icon"></i>
+                </button> */}
                 <h1 className="stack">
                   [{" "}
                   {stack.map((val, idx, arr) => {
