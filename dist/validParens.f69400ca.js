@@ -28288,13 +28288,37 @@ if ("development" === 'production') {
 },{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/form.tsx":[function(require,module,exports) {
 "use strict";
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
   if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
   }
-  result["default"] = mod;
+
+  __setModuleDefault(result, mod);
+
   return result;
 };
 
@@ -28352,19 +28376,44 @@ exports.default = Form;
 },{"react":"node_modules/react/index.js"}],"components/brace.tsx":[function(require,module,exports) {
 "use strict";
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
   if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
   }
-  result["default"] = mod;
+
+  __setModuleDefault(result, mod);
+
   return result;
 };
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Space = exports.RightBrace = exports.LeftBrace = void 0;
 
 var React = __importStar(require("react"));
 
@@ -29554,13 +29603,37 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
   if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
   }
-  result["default"] = mod;
+
+  __setModuleDefault(result, mod);
+
   return result;
 };
 
@@ -29599,7 +29672,7 @@ function (_React$Component) {
   _createClass(VisualizeCode, [{
     key: "represent",
     value: function represent() {
-      return "\n    const validParens = (str: string): boolean => {\n      if (str.length % 2 !== 0) {\n        return false;\n      }\n      let validStrings = [\"[\", \"]\", \"(\", \")\", \"{\", \"}\"];\n      let lookup: { [idx: string]: string } = {\n        \"(\": \")\",\n        \"[\": \"]\",\n        \"{\": \"}\"\n      }\n      let stack = [];\n      for (let s of str) {\n        if (!validStrings.includes(s)) {\n          console.error(\"a non valid string character was passed\");\n          return false;\n        }\n        if (Object.keys(lookup).includes(s)) {\n          stack.push(lookup[s])\n        }\n        else {\n          if (stack.pop() !== s) {\n            return false;\n          }\n        }\n      }\n      return true;\n    }\n";
+      return "\n    const validParens = (str: string): boolean => {\n      if (str.length % 2 !== 0) {\n        return false;\n      }\n      const validStrings = [\"[\", \"]\", \"(\", \")\", \"{\", \"}\"];\n      const lookup: { [idx: string]: string } = {\n        \"(\": \")\",\n        \"[\": \"]\",\n        \"{\": \"}\"\n      }\n      const stack = [];\n      for (let s of str) {\n        if (!validStrings.includes(s)) {\n          console.error(\"a non valid string character was passed\");\n          return false;\n        }\n        if (Object.keys(lookup).includes(s)) {\n          stack.push(lookup[s])\n        } else if (stack.pop() !== s) {\n            return false;\n          }\n      }\n      return true;\n    }\n";
     }
   }, {
     key: "componentDidMount",
@@ -29651,13 +29724,37 @@ exports.default = VisualizeCode;
 },{"react":"node_modules/react/index.js","prismjs":"node_modules/prismjs/prism.js","prismjs/components/prism-typescript":"node_modules/prismjs/components/prism-typescript.js"}],"components/explainbraces.tsx":[function(require,module,exports) {
 "use strict";
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
   if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
   }
-  result["default"] = mod;
+
+  __setModuleDefault(result, mod);
+
   return result;
 };
 
@@ -74589,13 +74686,37 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
   if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
   }
-  result["default"] = mod;
+
+  __setModuleDefault(result, mod);
+
   return result;
 };
 
@@ -74860,13 +74981,37 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
   if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
   }
-  result["default"] = mod;
+
+  __setModuleDefault(result, mod);
+
   return result;
 };
 
@@ -74943,13 +75088,37 @@ exports.default = ValidBraces;
 },{"react":"node_modules/react/index.js","./form":"components/form.tsx","./algo":"components/algo.tsx","./brace":"components/brace.tsx"}],"app.tsx":[function(require,module,exports) {
 "use strict";
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
   if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
   }
-  result["default"] = mod;
+
+  __setModuleDefault(result, mod);
+
   return result;
 };
 
@@ -74975,13 +75144,37 @@ exports.default = App;
 },{"react":"node_modules/react/index.js","./components/validparens":"components/validparens.tsx"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
   if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
   }
-  result["default"] = mod;
+
+  __setModuleDefault(result, mod);
+
   return result;
 };
 
@@ -74999,8 +75192,7 @@ var React = __importStar(require("react"));
 
 var react_dom_1 = __importDefault(require("react-dom"));
 
-var app_1 = __importDefault(require("./app")); // ReactDom.render(<VisualizeCode />, document.getElementById("root"));
-
+var app_1 = __importDefault(require("./app"));
 
 react_dom_1.default.render(React.createElement(app_1.default, null), document.getElementById("root"));
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./app":"app.tsx"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -75031,7 +75223,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62407" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64734" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

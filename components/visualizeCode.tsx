@@ -15,13 +15,13 @@ class VisualizeCode extends React.Component {
       if (str.length % 2 !== 0) {
         return false;
       }
-      let validStrings = ["[", "]", "(", ")", "{", "}"];
-      let lookup: { [idx: string]: string } = {
+      const validStrings = ["[", "]", "(", ")", "{", "}"];
+      const lookup: { [idx: string]: string } = {
         "(": ")",
         "[": "]",
         "{": "}"
       }
-      let stack = [];
+      const stack = [];
       for (let s of str) {
         if (!validStrings.includes(s)) {
           console.error("a non valid string character was passed");
@@ -29,12 +29,9 @@ class VisualizeCode extends React.Component {
         }
         if (Object.keys(lookup).includes(s)) {
           stack.push(lookup[s])
-        }
-        else {
-          if (stack.pop() !== s) {
+        } else if (stack.pop() !== s) {
             return false;
           }
-        }
       }
       return true;
     }
@@ -60,14 +57,7 @@ class VisualizeCode extends React.Component {
             aria-hidden="true"
           >
             <div className="modal-dialog modal-dialog-centered" role="document">
-              <div
-                className="modal-content"
-                // style={{
-                //   width: "1400px",
-                //   height: "1000px",
-                //   backgroundColor: "beige",
-                // }}
-              >
+              <div className="modal-content">
                 <button
                   className="close justify-content-center btn btn-primary border border-warning m-2 p-2"
                   data-dismiss="modal"

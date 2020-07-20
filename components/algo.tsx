@@ -163,6 +163,7 @@ const Algo = (props: AlgoI): JSX.Element => {
               </div>
             </div>
           </div>
+          {/* i should probably delete this dead code later */}
           {/* <div className="container">
             <div className="row">
               <div className="lookup col-4 alert alert-info">
