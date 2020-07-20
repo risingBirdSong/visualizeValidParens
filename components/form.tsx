@@ -21,7 +21,7 @@ const Form = (props: FormI): JSX.Element => {
     }, "");
     rdcd === false
       ? (() => {
-          props.setParentString("please enter only valid braces");
+          props.setParentString("please enter only braces");
           props.setform("");
         })()
       : ((str: string) => {

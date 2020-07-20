@@ -28339,7 +28339,7 @@ var Form = function Form(props) {
       return acc === false ? false : valid.includes(cur) ? acc += cur : false;
     }, "");
     rdcd === false ? function () {
-      props.setParentString("please enter only valid braces");
+      props.setParentString("please enter only braces");
       props.setform("");
     }() : function (str) {
       props.setParentString("");
