@@ -9,7 +9,7 @@
   "type": "module",
   "dependencies": {
     "@types/react-dom": "^16.9.8",
-    "prismjs": "^1.21.0",
+    "prismjs": "^1.23.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "semantic-ui-react": "^0.88.2",
